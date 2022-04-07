@@ -1,10 +1,10 @@
 # Using the LayoutBuilder Widget
 
-Sometimes users are not concerned with the dimensions of the app's screen, but rather how much space a parent widget has devoted to its child widgets for them you to render appropriately. For this case, there's a special widget called ```LayoutBuilder```.
+Sometimes users may not be concerned with the dimensions of the app's screen, but rather how much space a parent widget has devoted to its child widgets for them to render appropriately. For this case, there's a special widget called ```LayoutBuilder```.
 
 The [```LayoutBuilder```](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) widget is a simpler ```MediaQuery``` widget for basic size requests, but the best thing of it is that it tells the underlying widget tree how much space it has available.
 
-It is similar to the ```Builder``` widget, except that the framework calls the builder function at layout time and provides the parent widget's constraints.
+It is similar to the ```Builder``` widget, except that the framework calls the ```builder``` function at layout time and provides the parent widget's constraints.
 
 Its ```builder``` function is fed both the ```BuildContext``` and a ```BoxConstraints``` instance, from which you can pull the **maxWidth** and **maxHeight**, which after the parent builds, it passes these values to a child for them to know the available dimensions in which they can render.
 
@@ -24,7 +24,7 @@ child: LayoutBuilder(
 
 ```
 
-Next, inside the body of this widget, in its ```builder``` method, next to the ```context```, add an additional parameter available to the ```LayoutBuilder``` - the ```constraints``` parameter (an instance of ```BoxConstraints```), as shown below:
+Next, inside the body of this widget, in its ```builder``` method, next to the ```context``` parameter, add an additional parameter available to the ```LayoutBuilder``` - the ```constraints``` parameter (an instance of ```BoxConstraints```), as shown below:
 
 ```dart
 

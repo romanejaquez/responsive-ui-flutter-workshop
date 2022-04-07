@@ -16,7 +16,7 @@ Essentially, breakpoints are pixel values that a developer/designer can define i
 
 Let's represent that in our code.
 
-Find the ```Utils``` class in our code and let's start by adding the most common breakpoints that our app should handle based on the devices in which our users will consume our app, randing from mobile, tablet, laptop, and desktop, as a set of ```const``` values:
+Find the ```Utils``` class in our code and let's start by adding the most common breakpoints that our app should handle based on the devices in which our users will consume our app, ranging from mobile, tablet, laptop, and desktop, as a set of ```const``` values:
 
 ```dart
 
@@ -30,12 +30,13 @@ static const int desktopMaxSize = 1200;
 
 These values are to be used as a guideline, using the maximum size available for the device category that match the screen dimensions, that way we can establish a range between them and be a bit more flexible.
 
-Now let's define an ```enum``` that will map to the corresponding device screen sizes that we're supporting. Place your enum code above the ```Utils``` class.
+Now let's define an ```enum``` that will map to the corresponding device screen sizes that we're supporting. Place your enum code above the ```Utils``` class if you want.
 
 ```dart
 
 // Step #2: Add an enum called "DeviceBreakpoints"
 // for the supported device screen sizes; use the following values:
+
 // mobile, tablet, laptop, desktop, tv
 
 ```
@@ -92,7 +93,7 @@ DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
 
 As you notice, we are feeding the **BuildContext** provided to this widget down to the ```Utils.getDeviceType``` method, which internally determines the corresponding device screen size, and returns the corresponding enum for us to do further processing.
 
-Now, using that enum value, extract the value corresponding to it from the ```Utils.deviceTypes``` mapping, which returns a ```DeviceDescription``` object - a model helper class that contains an icon and a label that maps to the matched supported screen type.
+Now, using that enum value, extract the value corresponding to it from the ```Utils.deviceTypes``` mapping, which returns a ```DeviceDescription``` object - a model helper class that contains an icon and a label and maps to the matched supported screen type.
 
 ```dart
 
@@ -128,4 +129,4 @@ Go ahead now an run this on **DartPad** and if you've replaced all code well, yo
 
 ***Suggestion***: don't go by device-specific screen size breakpoints. Instead of forcing your design into a specific device size, you should let your content flow, for the sake of delivering a great user experience and content consumption by your users.
 
-You should start with the most common device-screen breakpoints, but you should always strive for "content-based" breakpoints, where you set a breakpoint at each point where content layout is not meeting the expectations of your consumers. This method greatly simplifies the implementation along with easing the management of media queries.
+You should start with the most common device-screen breakpoints (as defined above), but you should always strive for "content-based" breakpoints, where you set a breakpoint at each point where content layout truly meets the expectations of your consumers. This method greatly simplifies the implementation along with easing the management of media queries.

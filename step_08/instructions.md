@@ -101,7 +101,7 @@ Create a class called ```FlutterAirSideMenu``` that extends ```StatelessWidget``
 We'll proceed by creating a method inside this class that will streamline the creation of our menu items. The method will be called ```getMenuItems``` with the following specs:
 
 - return a ```List<Widget>``` so we can arrange its children as we please
-- take in two parameters:
+- make it so it takes two parameters:
     - ```items```: type ```List<FlutterAirSideBarItem>```, which represents the menu items to show. We'll use two pre-built lists we've already created for you (for the sake of this tutorial): ```Utils.sideBarItems``` and ```Utils.sideMenuItems```
     - ```styles```: type ```FlutterAirSideMenuStyles``` so that we can apply the styles programmatically as we build the menu items according to the corresponding style mapping per supported screen
 

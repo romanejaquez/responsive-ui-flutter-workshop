@@ -2,7 +2,7 @@
 
 Let's say you still want your user interface to flow seamlessly height-wise and stretch nicely, but what if your users are shrinking their screen and instead of squishing your UI, you want to force a minimum height, then a scrollbar kicks in. This way you don't have to necessarily remove content, since the content is critical and must be shown at all times.
 
-You can use a ```ConstrainedBox``` in most situations, but in this particular case you want to use a ```Container``` widget, set its height to be the available vertical constraints for the enclosing widget (```constraints.maxHeight```) and set the constraints on the container based on some fixed height you want to impose upon reaching a specific threshold based on the supported screen. Then the scrolling functionality kicks in.
+You can use a ```ConstrainedBox``` widget in most situations, but in this particular case you want to use a ```Container``` widget, set its height to be the available vertical constraints for the enclosing widget (```constraints.maxHeight```) and set the constraints on the container based on some fixed height you want to impose upon reaching a specific threshold based on the supported screen. Then the scrolling functionality kicks in.
 
 This is what it looks like right now:
 
@@ -90,7 +90,7 @@ Expanded(
 
 ```
 
-The ```LayoutBuilder``` will supply the constraints needed to read what the ```maxHeight``` and ```minHeight``` values are available for this widget.
+The ```LayoutBuilder``` will supply the constraints to get the ```maxHeight``` and ```minHeight``` values available for this widget.
 
 Continue wrapping the ```Padding``` in yet another widget, a ```SingleChildScrollView``` - this is so that once it hits the optimal viewport height we've designated, the scrolling kicks in; populate the ```controller``` property by feeding a new instance of ```ScrollController``` so its scrolling is independent from any other scrolling entity on this page and doesn't cause any conflicts:
 
@@ -116,7 +116,7 @@ Expanded(
 
 Next, inside the ```SingleChildScrollView```, wrap the ```Padding``` widget containing the ```FlutterAirFlightInfo``` widget in one last widget:  a ```Container``` widget. This is the widget that will adopt the constraints passed down by the ```LayoutBuilder```.
 
-Set the ```Container```'s ```height``` property to be the ```constraints.maxHeight``` to force it to always be the height of the maximum available space; then populate the ```Container```'s ```constraints``` property by creating an instance of ```BoxConstraints``` and populating its ```minHeight``` property with the ```flightInfoStyles.minHeight``` property we added earlier, only if the ```constraints.minHeight``` value is smaller than the preset ```minHeight``` we established earlier. Your ```Container``` structure should look like this:
+Set the ```Container```'s ```height``` property to be the ```constraints.maxHeight``` to force it to always be the height of the maximum available space; then populate the ```Container```'s ```constraints``` property by creating an instance of ```BoxConstraints``` and populating its ```minHeight``` property with the ```flightInfoStyles.minHeight``` property we added earlier, but only if the ```constraints.minHeight``` value is smaller than the preset ```minHeight``` we established earlier. Your ```Container``` structure should look like this:
 
 ```dart
 
@@ -144,9 +144,9 @@ Container(
 
 ## Applying the same strategy to the FlutterAirSideBar widget
 
-If you do the shrinking on the page once again, we've fixed the yellow and black lines indicators on the flight info in the main region of the page; now let's take care of it on the side bar widget. We'll pretty much follow the same approach.
+If you do the shrinking on the page once again, we've fixed the yellow and black line error indicators on the flight info in the main region of the page; now let's take care of it on the side bar widget. We'll pretty much follow the same approach.
 
-Start by locating the side bar item styles helper class called ```FlutterAirSideBarItemStyles``` and add a new property called ```minHeight```, also ```double```. Add its corresponding constructor parameter to it.
+Start by locating the side bar item styles helper class called ```FlutterAirSideBarItemStyles``` and add a new property called ```minHeight```, also type ```double```. Add its corresponding named constructor parameter to it.
 
 ```dart
 
@@ -167,7 +167,7 @@ Next, go to the ```Utils``` class and locate its corresponding mapping called ``
 ```
 
 
-Now go back to the ```FlutterAirSideBar``` widget - no need to import the ```sidebarItemStyles``` since we're already doing it.
+Now go back to the ```FlutterAirSideBar``` widget - no need to import the ```sidebarItemStyles``` here since we're already doing it.
 
 Inside its ```build``` method, locate the ```Column``` widget that is consuming the ```Utils.sideBarItems``` via the ```List.generate``` factory method, and wrap it inside the following structure:
 

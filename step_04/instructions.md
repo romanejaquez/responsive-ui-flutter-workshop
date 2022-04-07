@@ -2,9 +2,9 @@
 
 As we saw in the previous step, the ```LayoutBuilder``` dictates how much space their children have at their disposal. 
 
-And as you may have noticed, the ```MediaQuery``` is great for high-level view of your app's screen size and available real estate, while ```LayoutBuilder``` is more for lower level widgets down the hierarchy.
+And as you may have noticed, the ```MediaQuery``` is great to obtain a high-level view of your app's screen size and available real estate, while ```LayoutBuilder``` is more for lower-level widgets down the hierarchy.
 
-You can implement ```LayoutBuilder``` within other ```LayoutBuilder``` widgets, in which the outer ```LayoutBuilder``` dictates the dimensions of the enclosing ```LayoutBuilder```, which in turn receives updated constraints to pass down its hierarchy and so on, providing an accurate picture of the available space respective to their enclosing parent widgets.
+You can implement ```LayoutBuilder``` widgets within other ```LayoutBuilder``` widgets, in which the outer ```LayoutBuilder``` dictates the dimensions of the enclosing ```LayoutBuilder```, which in turn receives updated constraints to pass down its hierarchy and so on, providing an accurate picture of the available space respective to their enclosing parent widgets.
 
 Let's add yet another ```LayoutBuilder``` inside another custom widget we created for you, called ```ChildLayoutBuilderIndicator```, where you'll do exactly the same thing as before.
 

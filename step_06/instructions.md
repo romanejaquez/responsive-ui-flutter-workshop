@@ -16,7 +16,7 @@ Take a look at both ```flightInfoColumn``` which is a ```Column``` widget that c
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_1.png)
 
-To a two-column layout, where the top row switches to becoming a column and shifts its contents to the right side of the main column: 
+To a two-column layout, where the top row switches to become a column and shifts its contents to the right side of the main column: 
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_2.png)
 
@@ -76,6 +76,6 @@ return LayoutBuilder(
 
 This way, as the user stretches the screen, the ```LayoutBuilder``` widget supplies the available constraints, which get evaluated until it satisfies the corresponding condition, which then gets returned by the build method and thus displayed to the user accordingly.
 
-Notice we're making use of the ```Expanded``` widget here, which allows us to distribute the available space in the parent ```Row``` among the child ```Expanded``` widgets. Notice we're setting the ```flex``` property to 2 to the top one; this gives sizing priority to this one when layout space is being distributed, making it twice the available space as the other one. This is a way to achieve fluidity out of the box in Flutter.
+Notice we're making use of the ```Expanded``` widget here, which allows us to distribute the available space in the parent ```Row``` among both child ```Expanded``` widgets. Notice also we're setting the ```flex``` property to 2 on the top one; this gives sizing priority to it when layout space is being distributed, making it twice the available space as the other one. This is a way to achieve fluidity out of the box in Flutter.
 
 Go ahead now and stretch the **UI Output** panel after hitting ```Run``` on DartPad to see how, as you stretch and shrink the screen and you cross over the 600px threshold established, the layout switches from being a ```Column``` to a ```Row```, and notice the ```Expanded``` widgets in action as the space stretches in a flexible manner, keeping the content flowing on the screen.
