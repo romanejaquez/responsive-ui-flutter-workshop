@@ -2,7 +2,7 @@
 
 Let's reintroduce the concept of helper classes that consolidate all style changes we want to apply at the different supported breakpoints by our application while implementing the following feature depicted in the image below:
 
-![LayoutBuilder](http://localhost:8080/images/flutterair2.gif)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/flutterair2.gif)
 
 Notice how the font size changes as the screen dimensions match the supported breakpoints, and pay specific attention to the side menu widget (i.e. ```Drawer```) that when it is on a larger screen, its background is white and with a bit of content, but when it is on a smaller screen (i.e. mobile) the background changes to purple and more content appears.
 
@@ -87,7 +87,7 @@ Now let's build out the widget that will hold our side menu.
 
 In the image below, notice how for screen sizes larger than mobile we only have two menu items available, while for mobile only we show all menu items available. This is the strategy we're following of showing content when space allows but still having an alternative on how to access it.
 
-![SideMenu](http://localhost:8080/images/step8_1.png)
+![SideMenu](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step8_1.png)
 
 Create a class called ```FlutterAirSideMenu``` that extends ```StatelessWidget``` and override its ```build``` method.
 
@@ -217,7 +217,7 @@ return Container(
 
 Let's focus our sole attention now to this child ```Column```, which we'll split into two regions: the top portion will display the menu items, and occupy most of the real estate in this column, while the bottom part will just be a decorative piece so we'll add some sort of badge / icon, as follows:
 
-![SideMenu](http://localhost:8080/images/step8_2.png)
+![SideMenu](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step8_2.png)
 
 Let's make the items on our column to be left aligned, and have as its two immediate children an ```Expanded``` widget and a ```Container``` widget:
 

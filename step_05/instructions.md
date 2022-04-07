@@ -11,7 +11,7 @@ You can apply certain rule-of-thumb guidelines when it comes to achieving good r
 ## Showing content when there's room for it
 Make sure that when you hide content, you provide an alternative on how to bring it back. This is usually reserved for non-critical content that the user can do away with not having apparently visible all the time, for example an expandable navigation, that when there's room on the screen we can show all the time, otherwise we can hide it and show it at the click of a button on a smaller screen.
 
-![LayoutBuilder](http://localhost:8080/images/flutterair1.gif)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/flutterair1.gif)
 
 In the above image, you see how the sidebar widget either expands when there's room, and shrinks until is not visible for smaller screens. Clicking on the hamburger menu exposes those options on a drawer menu.
 

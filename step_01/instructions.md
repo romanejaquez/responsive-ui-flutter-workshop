@@ -74,4 +74,4 @@ Go ahead now and hit ```Run``` on DartPad to execute the code, and then resize t
 
 You should see a couple of cool widgets representing arrows indicating the measurements of the **UI Output** containing window, and in real-time, as you resize, you should see the values changing. Pretty neat!
 
-![Media Query](http://localhost:8080/images/s1-1.png)
+![Media Query](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/s1-1.png)

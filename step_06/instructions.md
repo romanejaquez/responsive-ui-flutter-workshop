@@ -6,7 +6,7 @@ Another rule-of-thumb guideline that you can apply to achieve good responsivenes
 
 In this section we'll see how you can change the layout of one of the flight information sections from a row when space is limited, to an additional column when there's more room to expand.
 
-![LayoutBuilder](http://localhost:8080/images/layoutswitch.gif)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/layoutswitch.gif)
 
 Let's proceed!
 
@@ -14,11 +14,11 @@ Locate the ```FlutterAirFlightInfo``` widget, and go to the ```return``` stateme
 
 Take a look at both ```flightInfoColumn``` which is a ```Column``` widget that contains the ```Row``` widgets representing the rows of information. We'll switch the layout from this - a single column with rows:
 
-![LayoutBuilder](http://localhost:8080/images/step6_1.png)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_1.png)
 
 To a two-column layout, where the top row switches to becoming a column and shifts its contents to the right side of the main column: 
 
-![LayoutBuilder](http://localhost:8080/images/step6_2.png)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_2.png)
 
 Let's execute!
 

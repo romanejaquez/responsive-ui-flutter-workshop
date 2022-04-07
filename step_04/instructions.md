@@ -43,4 +43,4 @@ Make the changes above and go to the **UI Console** panel on the right and hit *
 
 You should see something like the illustration below. In the next step we'll make use of these values, but in more realistic scenarios to rearrange the layout based on the available space given to widgets by their parents.
 
-![LayoutBuilder](http://localhost:8080/images/s4-1.png)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/s4-1.png)

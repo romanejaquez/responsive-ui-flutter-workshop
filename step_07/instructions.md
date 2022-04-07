@@ -6,11 +6,11 @@ You can use a ```ConstrainedBox``` in most situations, but in this particular ca
 
 This is what it looks like right now:
 
-![LayoutBuilder](http://localhost:8080/images/layoutconstraints_bad.gif)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/layoutconstraints_bad.gif)
 
 And this is what we'll accomplish in this section:
 
-![LayoutBuilder](http://localhost:8080/images/layoutconstraints_scroll.gif)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/layoutconstraints_scroll.gif)
 
 Let's apply this on both the main body and on the navigation on the left.
 

@@ -54,4 +54,4 @@ Go ahead and stretch the panel by dragging both from above and the sides to see 
 
 You will see something like the bottom image, which gives a very useful illustration of the constrast between the values that the ```MediaQuery``` generates versus the values a ```LayoutBuilder``` widget produces.
 
-![LayoutBuilder](http://localhost:8080/images/s3-1.png)
+![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/s3-1.png)

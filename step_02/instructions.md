@@ -123,7 +123,7 @@ If you want to see the values for the ```icon``` and ```label``` as widgets, the
 
 Go ahead now an run this on **DartPad** and if you've replaced all code well, you should see in the **UI Output** panel window to the right that, as you stretch horizontally, you will see an icon and a label at the top left corner, corresponding to each of the breakpoints that the screen falls under as we resize. Very useful!
 
-![Breakpoints](http://localhost:8080/images/s2-1.png)
+![Breakpoints](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/s2-1.png)
 
 
 ***Suggestion***: don't go by device-specific screen size breakpoints. Instead of forcing your design into a specific device size, you should let your content flow, for the sake of delivering a great user experience and content consumption by your users.
