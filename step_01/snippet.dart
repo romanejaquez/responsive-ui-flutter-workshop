@@ -33,6 +33,11 @@ class TestMediaQueryWidget extends StatelessWidget {
 
 class HorizontalSizeIndicator extends StatelessWidget {
   
+  // Hm, tricky one! These mediaQueryData object feel like they should be
+  // non-nullable and required. Otherwise, you have to use the ! operator below
+  // to get the size. However, I understand that also causes DartPad to show the
+  // missing arguments errors instead of just the Todos... Not sure the best
+  // solution here :)
   final MediaQueryData? mediaQueryData;
 
   const HorizontalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
@@ -89,9 +94,10 @@ class HorizontalSizeIndicator extends StatelessWidget {
 
 class VerticalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  // non-nullable?
+  final MediaQueryData mediaQueryData;
 
-  const VerticalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const VerticalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -32,6 +32,10 @@ We'll wrap this existing widget structure inside a ```LayoutBuilder``` and retur
 
 return LayoutBuilder(
     builder: (context, constraints) {
+
+        // Wait, why this random 600px breakpoint? Shouldn't we be using the 
+        // mobile / tablet / laptop etc static methods and breakpoints we 
+        // defined and used previously to keep all of the layout logic consistent?
     
         // TODO: if constraints.maxWidth is less than than 600px
         // then return the existing Column widget as usual

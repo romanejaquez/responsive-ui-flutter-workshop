@@ -2,7 +2,7 @@
 
 Sometimes users may not be concerned with the dimensions of the app's screen, but rather how much space a parent widget has devoted to its child widgets for them to render appropriately. For this case, there's a special widget called ```LayoutBuilder```.
 
-The [```LayoutBuilder```](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) widget is a simpler ```MediaQuery``` widget for basic size requests, but the best thing of it is that it tells the underlying widget tree how much space it has available.
+The [```LayoutBuilder```](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) widget is a simpler ```MediaQuery``` widget for basic size requests, but the best thing about it is that it tells the underlying widget tree how much space it has available.
 
 It is similar to the ```Builder``` widget, except that the framework calls the ```builder``` function at layout time and provides the parent widget's constraints.
 

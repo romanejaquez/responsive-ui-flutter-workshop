@@ -35,7 +35,7 @@ Use the following specs when creating the ```FlutterAirSideBarItemStyles``` clas
 
 ```
 
-Now let's go to the ```Utils``` class, and create a ```static``` **Map** called **sideBarItemStyles**, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
+Now let's go to the ```Utils``` class, and create a ```static``` **Map** called `sideBarItemStyles`, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
 
 Build it according to these specs:
 - for ```mobile``` and ```tablet```: set the iconSize to **30** and labelSize to **15**
@@ -124,7 +124,7 @@ Let's now focus our attention to that ```Column``` widget - the child of the ```
 Inside the ```Column```, add three components:
 - a ```const``` ```SizedBox``` widget, with 20px in height
 - an ```Expanded``` widget wrapping a ```Column``` widget - here we'll place our main content - the icons and labels
-- another ```const``` ```Expanded``` widget, wrapping an empty ```SizedBox```; we only want it as a placeholder to compete in space with the top ```Expanded``` widget.
+- a ```const``` ```Spacer``` widget, which acts as a placeholder to compete in space with the top ```Expanded``` widget.
 
 Your structure inside the ```Column``` should look like this:
 

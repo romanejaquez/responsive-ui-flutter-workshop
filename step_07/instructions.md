@@ -68,8 +68,8 @@ Widget build(BuildContext context) {
     
 ```
 
-
-Then, proceed to wrap the existing ```Padding``` widget inside a ```LayoutBuilder``` widget, and return it out of its ```builder``` method:
+<!-- I found this part a little confusing. At first I thought the build method should be returning a `Padding` instead of a `Scaffold`. -->
+Then, proceed to wrap the ```Padding``` widget found in the `Scaffold.body` inside a ```LayoutBuilder``` widget, and return it out of its ```builder``` method:
 
 
 ```dart
