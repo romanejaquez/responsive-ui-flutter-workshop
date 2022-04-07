@@ -35,7 +35,7 @@ Use the following specs when creating the ```FlutterAirSideBarItemStyles``` clas
 
 ```
 
-Now let's go to the ```Utils``` class, and create a ```static``` **Map** called **sideBarItemStyles**, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
+Now let's go to the ```Utils``` class, and create a ```static``` **Map** called ```sideBarItemStyles```, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
 
 Build it according to these specs:
 - for ```mobile``` and ```tablet```: set the iconSize to **30** and labelSize to **15**
@@ -124,7 +124,7 @@ Let's now focus our attention to that ```Column``` widget - the child of the ```
 Inside the ```Column```, add three components:
 - a ```const``` ```SizedBox``` widget, with 20px in height
 - an ```Expanded``` widget wrapping a ```Column``` widget - here we'll place our main content - the icons and labels
-- another ```const``` ```Expanded``` widget, wrapping an empty ```SizedBox```; we only want it as a placeholder to compete in space with the top ```Expanded``` widget.
+- a ```const``` ```Spacer``` widget, which acts as a placeholder to compete in space with the top ```Expanded``` widget.
 
 Your structure inside the ```Column``` should look like this:
 
@@ -144,9 +144,7 @@ Column(
         ]
       )
     ),
-    const Expanded(
-      child: SizedBox()
-    )
+    const Spacer()
   ]
 )
 
@@ -226,7 +224,7 @@ Now, right under the ```IconButton``` widget, add a ```Text``` widget wrapped in
 
 ```dart
 
-// Step #9: add a Text widget with some padding
+// Step #10: add a Text widget with some padding
 // and populate it with the Utils.sideBarItems.label
 
 Padding(
@@ -246,7 +244,7 @@ The basic widget is complete. Let's add it to the widget structure, all the way 
 
 ```dart
 
-// Step #10: add the newly created FlutterAirSideBar widget
+// Step #11: add the newly created FlutterAirSideBar widget
 // as a child of the Scaffold's body's Row widget
 
 // ... rest of the code omitted
@@ -270,7 +268,7 @@ Wrap the ```Material``` widget inside a ```Visibility``` widget, and set its ```
 
 ```dart
 
-// Step #11: Use MediaQuery.of(context).size.width to compare the screen's
+// Step #12: Use MediaQuery.of(context).size.width to compare the screen's
 // width against our preset mobileMaxSize value:
 
 // ... rest of the code omitted for brevity:
@@ -293,7 +291,7 @@ Go down into this widget's hierarchy and locate the ```Padding``` widget that is
 
 ```dart
 
-// Step #12: Use MediaQuery.of(context).size.width to compare the screen's
+// Step #13: Use MediaQuery.of(context).size.width to compare the screen's
 // width against our preset tabletMaxSize value:
 
 // ... rest of the code omitted for brevity:

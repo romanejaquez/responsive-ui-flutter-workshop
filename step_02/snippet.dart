@@ -24,7 +24,9 @@ class Utils {
   
   // TODO: add Step #1 here (the breakpoint values)
   
-  static Map<DeviceBreakpoints, DeviceDescription> deviceTypes = {
+  // TODO: Step #2 - uncomment the bottom mapping
+  // after creating the enum above
+  /*static Map<DeviceBreakpoints, DeviceDescription> deviceTypes = {
     DeviceBreakpoints.mobile: DeviceDescription(
       icon: Icons.phone_iphone,
       label: "Mobile"
@@ -45,7 +47,7 @@ class Utils {
       icon: Icons.tv,
       label: "Large TV"
     )
-  };
+  };*/
   
   // TODO: add Step #3 here (the getDeviceType method)
 }

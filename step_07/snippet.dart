@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,131 +15,15 @@ class FlutterAirApp extends StatelessWidget {
           Theme.of(context).textTheme
         )
       ),
-      home: FlutterAirSplash()
-    );
-  }
-}
-
-class FlutterAirSplash extends StatefulWidget {
-
-  @override
-  FlutterAirSplashState createState() => FlutterAirSplashState();
-}
-
-class FlutterAirSplashState extends State<FlutterAirSplash> {
-  
-  Timer? timer;
-  
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer(const Duration(seconds: 2), () { 
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FlutterAirWelcome())
-      );
-    });
-  }
-
-  @override
-  void dispose() {
-    timer!.cancel();
-    super.dispose();
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    
-    return Scaffold(
-      backgroundColor: Utils.mainThemeColor,
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
-                  children: [
-                    Center(
-                      child: ClipOval(
-                        child: Container(
-                          width: 70,
-                          height: 70,
-                          color: Utils.secondaryThemeColor
-                        )
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(top: 10),
-                      child: const Icon(Icons.flight_takeoff, color: Utils.mainThemeColor, size: 50)
-                    )
-                  ]
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('flutter', style: TextStyle(color: Colors.white, fontSize: 30)),
-                    Text('Air', style: TextStyle(color: Utils.secondaryThemeColor, fontSize: 30))
-                  ]
-                )
-              ]
-            )
-          ),
-          
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox(
-              height: 240,
-              width: MediaQuery.of(context).size.width,
-              child: Stack(
-                children: [
-                  Positioned(
-                    bottom: -20,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 100),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  ),
-                  Positioned(
-                    bottom: -80,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 150),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  ),
-                  Positioned(
-                    bottom: -140,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 200),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  )
-                ]
-              )
-            )
-          )
-        ]
-      )
+      home: FlutterAirWelcome()
     );
   }
 }
 
 class FlutterAirWelcome extends StatelessWidget {
   
+  // TODO: Step #3 - add the flightInfoStyles here
+
   @override
   Widget build(BuildContext context) {
     
@@ -153,7 +36,7 @@ class FlutterAirWelcome extends StatelessWidget {
           FlutterAirSideBar(),
           Expanded(
 
-            // TODO: start building the main region 
+            // TODO: Step #4: start building the main region 
             // structure from this point forward, wrapping
             // the Padding widget below
 
@@ -187,7 +70,7 @@ class FlutterAirSideBar extends StatelessWidget {
               const SizedBox(height: 20),
               Expanded(
 
-                // TODO: start adding the side bar structure
+                // TODO: Step #9 - start adding the side bar structure
                 // from this point forward
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -226,9 +109,7 @@ class FlutterAirSideBar extends StatelessWidget {
                   )
                 )
               ),
-              const Expanded(
-                child: SizedBox()
-              )
+              const Spacer()
             ]
           )
         )
@@ -426,7 +307,7 @@ class FlutterAirFlightInfo extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
       
-      if (constraints.maxWidth < 600) {
+      if (constraints.maxWidth < Utils.twoColumnLayoutWidth) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -536,6 +417,8 @@ class Utils {
   static const int laptopMaxSize = 1024;
   static const int desktopMaxSize = 1200;
 
+  static const int twoColumnLayoutWidth = 600;
+
   static const Color mainThemeColor = Color(0xFF5C1896);
   static const Color secondaryThemeColor = Color(0xFFA677FF);
   static const Color darkThemeColor = Color(0xFF44146E);
@@ -581,7 +464,7 @@ class Utils {
   };
 
   static Map<DeviceBreakpoints, FlutterAirFlightInfoStyles> flightInfoStyles = {
-    // TODO: set the minHeight with 500 to all mappings below
+    // TODO: Step #2 - set the minHeight with 500 to all mappings below
     DeviceBreakpoints.mobile: FlutterAirFlightInfoStyles(
       labelSize: 15,
       primaryValueSize: 60,
@@ -707,7 +590,7 @@ class Utils {
   ];
 
   static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
-    // TODO: set the minHeight to 200 on all mappings below
+    // TODO: Step #8 - set the minHeight to 200 on all mappings below
     DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15,
@@ -760,7 +643,7 @@ class FlutterAirFlightInfoStyles {
   double? flightLineSize;
   double? flightLineEndRadiusSize;
   double? secondaryIconSize;
-  // TODO: add additional property called
+  // TODO: Step #1 - add additional property called
   // "minHeight", type double?
 
   FlutterAirFlightInfoStyles({
@@ -775,20 +658,20 @@ class FlutterAirFlightInfoStyles {
     this.flightLineSize,
     this.flightLineEndRadiusSize,
     this.secondaryIconSize,
-    // TODO: add named parameter to property "minHeight"
+    // TODO:  Step #1 - (cont.) add named parameter to property "minHeight"
   });
 }
 
 class FlutterAirSideBarItemStyles {
   double? iconSize;
   double? labelSize;
-  // TODO: add additional property called
+  // TODO: Step #7 - add additional property called
   // "minHeight", type double?
 
   FlutterAirSideBarItemStyles({
     this.iconSize,
     this.labelSize,
-    // TODO: add named parameter to property "minHeight"
+    // TODO: Step #7 (cont.) - add named parameter to property "minHeight"
   });
 }
 
@@ -797,25 +680,4 @@ class FlutterAirSideBarItem {
   String? label;
 
   FlutterAirSideBarItem({ this.icon, this.label });
-}
-
-class ClipPathClass extends CustomClipper<Path> {
-  
-  final double? pos;
-  
-  ClipPathClass({ this.pos });
-  
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.moveTo(0.0, size.height - pos!);
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

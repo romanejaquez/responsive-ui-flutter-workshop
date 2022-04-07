@@ -22,7 +22,7 @@ To a two-column layout, where the top row switches to become a column and shifts
 
 Let's execute!
 
-We'll wrap this existing widget structure inside a ```LayoutBuilder``` and return it only if the constraints' ```maxWidth``` is smaller than a specified threshold, which we found our sweet spot to be 600px, so let's do just that:
+We'll wrap this existing widget structure inside a ```LayoutBuilder``` and return it only if the constraints' ```maxWidth``` is smaller than a specified threshold (which we found our sweet spot to be 600 px), for which we've defined a ```const``` in our ```Utils``` called ```twoColumnLayoutWidth```, so let's do just that:
 
 ```dart
 
@@ -33,24 +33,27 @@ We'll wrap this existing widget structure inside a ```LayoutBuilder``` and retur
 return LayoutBuilder(
     builder: (context, constraints) {
     
-        // TODO: if constraints.maxWidth is less than than 600px
+        // TODO: Step #1 (cont.): if constraints.maxWidth is less than our 
+        // predefined "twoColumnLayoutWidth" threshold,
         // then return the existing Column widget as usual
     }
 });
 
 ```
 
-Now return another layout otherwise - when the constraints do not satisfy that condition, i.e. the one when the ```constraints.maxWidth``` are greater than or equals the specified threshold (600 px), as shown below:
+Now return another layout otherwise - when the constraints do not satisfy that condition, i.e. the one when the ```constraints.maxWidth``` are greater than or equals the specified threshold (```Utils.twoColumnLayoutWidth```), as shown below:
 
 ```dart
 
 return LayoutBuilder(
     builder: (context, constraints) {
     
-    // TODO: if constraints.maxWidth is less than than 600px
+    // TODO: Step #1 (cont.) if constraints.maxWidth is less than our 
+    // predefined "twoColumnLayoutWidth" threshold,
     // then return the existing Column widget as usual
     
     // otherwise return the bottom structure:
+    // TODO: Step #2
     // a Row with two (2) columns:
     // left side shows the main flight details
     // and right side shows the flight and seat info only
@@ -79,3 +82,6 @@ This way, as the user stretches the screen, the ```LayoutBuilder``` widget suppl
 Notice we're making use of the ```Expanded``` widget here, which allows us to distribute the available space in the parent ```Row``` among both child ```Expanded``` widgets. Notice also we're setting the ```flex``` property to 2 on the top one; this gives sizing priority to it when layout space is being distributed, making it twice the available space as the other one. This is a way to achieve fluidity out of the box in Flutter.
 
 Go ahead now and stretch the **UI Output** panel after hitting ```Run``` on DartPad to see how, as you stretch and shrink the screen and you cross over the 600px threshold established, the layout switches from being a ```Column``` to a ```Row```, and notice the ```Expanded``` widgets in action as the space stretches in a flexible manner, keeping the content flowing on the screen.
+
+
+Note: aside from the predefined breakpoints for all common device screens we set earlier, you can define arbitrary values like the one we defined (```Utils.twoColumnLayoutWidth```), which provide your app with intermediate values that make it trigger required changes and cause adjustments in your app to make it flow better. Use your best judgement in these cases.
