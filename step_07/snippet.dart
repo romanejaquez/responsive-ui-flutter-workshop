@@ -143,6 +143,12 @@ class FlutterAirWelcome extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    // TODO: add flightInfoStyles
+    
+    // Personally, finding the `FlutterAirWelcome` in the small Dartpad window 
+    // is kind of cumbersome in a file with 700 lines of code. Todos help me
+    // navigate.
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -760,8 +766,12 @@ class FlutterAirFlightInfoStyles {
   double? flightLineSize;
   double? flightLineEndRadiusSize;
   double? secondaryIconSize;
-  // TODO: add additional property called
+  // What happened to the numbers!? They really helped me follow the flow in
+  // previous steps :)
+  // TODO #1: add additional property called
   // "minHeight", type double?
+
+  
 
   FlutterAirFlightInfoStyles({
     this.labelSize,
