@@ -2,7 +2,7 @@
 
 ## What is Responsive Design?
 
-Responsive Design is the approach that suggests that design and development should adapt or "respond" to the user’s screen size, device orientation, and platform, in the hopes of achieving a fluid user interface that satisfies the needs of users and delivers a seamless experience.
+Responsive Design is the approach that suggests that design and development should adapt or "respond" to the user's screen size, device orientation, and platform, in the hopes of achieving a fluid user interface that satisfies the needs of users and delivers a seamless experience.
 
 When a Flutter app is ***responsive***, the widgets adjust based on the size of the screen they are presented on, and programmatically change based on a set of rules given to the rendering platform.
 
@@ -10,7 +10,7 @@ Flutter provides a set of widgets and constructs to achieve responsiveness in ou
 
 # Using the MediaQuery Widget
 
-The ```MediaQuery``` widget is for a higher level view of your app's screen size and can provide more detailed information about user layout preferences.
+The ```MediaQuery``` widget is available for when you wish to query your app's screen size at a high level, and can provide more detailed information about user layout preferences.
 
 If you want to learn the size of the current media (e.g., the window containing your app), you can read the ```MediaQueryData.size``` property from the ```MediaQueryData``` returned by ```MediaQuery.of```.
 
