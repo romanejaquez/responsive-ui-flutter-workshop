@@ -39,6 +39,8 @@ Now let's define an ```enum``` that will map to the corresponding device screen 
 
 // mobile, tablet, laptop, desktop, tv
 
+// Note: uncomment the Utils.deviceTypes static Map
+// after creating the enum above
 ```
 
 Now it is time to establish the relationship between the multiple screen sizes supported by our app and the values queried by the ```MediaQuery.of```, available in ```MediaQueryData.size```.

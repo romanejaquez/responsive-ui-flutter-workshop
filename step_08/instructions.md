@@ -21,10 +21,11 @@ For example, from this widget, we want to change the following properties upon h
 - ```iconSize``` (type ```double?```): the size of the icon should change depending on the screen size
 - ```labelSize``` (type ```double?```): same with the size of the labels
 
-Then, with that figured out, create a class called ```FlutterAirSideMenuStyles``` that encapsulates all of the properties above.
+Then, with that figured out, create a class called ```FlutterAirSideMenuStyles``` that encapsulates all of the properties above. Use the snippet below to kick things off and fill in the rest:
 
 ```dart
 
+// Step #1
 // TODO: add the custom helper class
 // that encapsulates the styles
 
@@ -58,7 +59,7 @@ For all others (tablet, laptop, desktop and tv):
 
 ```dart
 
-// TODO: Add the mappings in the Utils class,
+// TODO: Step #2 - Add the mappings in the Utils class,
 // called "sideMenuStyles", per supported breakpoint
 
 static Map<DeviceBreakpoints, FlutterAirSideMenuStyles> sideMenuStyles = {
@@ -93,7 +94,7 @@ Create a class called ```FlutterAirSideMenu``` that extends ```StatelessWidget``
 
 ```dart
 
-// TODO: create a class called "FlutterAirSideMenu"
+// TODO: Step #3 - create a class called "FlutterAirSideMenu"
 // that extends "StatelessWidget", and override its build method
 
 ```
@@ -120,7 +121,7 @@ The final method should look like below:
 
 ```dart
 
-// TODO: insert this method inside the FlutterAirSideMenu class
+// TODO: Step #4 - insert this method inside the FlutterAirSideMenu class
 
 // ... rest of the code omitted for brevity
 
@@ -159,7 +160,7 @@ Now, inside its ```build``` method, start by fetching the side menu styles corre
 
 ```dart
 
-// TODO: add this at the top of the FlutterAirSideMenu's build method
+// TODO: Step #5 - add this at the top of the FlutterAirSideMenu's build method
 
 DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
 FlutterAirSideMenuStyles? menuStyles = Utils.sideMenuStyles[deviceBreakpoint];
@@ -170,7 +171,7 @@ Proceed to utilize our newly created method ```getMenuItems``` to generate the m
 
 ```dart
 
-// TODO: next, if the current breakpoint is for 'mobile',
+// TODO: Step #6 - next, if the current breakpoint is for 'mobile',
 // then get the Utils.sideBarItems as menu items, otherwise
 // return an empty list
 
@@ -183,7 +184,7 @@ Next, let's populate the ones that will be default menu items (```sideMenuItems`
 
 ```dart
 
-// TODO: populate the default menu items
+// TODO: Step #7 - populate the default menu items
 List<Widget> defaultMenuItems = getMenuItems(Utils.sideMenuItems, menuStyles!);
 mainMenuItems.addAll(defaultMenuItems);
 
@@ -200,7 +201,7 @@ Your structure should look like this:
 
 ```dart
 
-// TODO: return this as the main wrapper 
+// TODO: Step #8 - return this as the main wrapper 
 // structure from this widget:
 
 // ... rest of the code omitted for brevity
@@ -223,7 +224,7 @@ Let's make the items on our column to be left aligned, and have as its two immed
 
 ```dart
 
-// TODO: make the contents left-aligned (CrossAlignment.start)
+// TODO: Step #9 - make the contents left-aligned (CrossAlignment.start)
 // and add an Expanded and a Container widget
 
 // ... rest of the code omitted for brevity
@@ -247,7 +248,7 @@ On the top region (i.e. the ```Expanded``` widget), add yet another ```Column```
 
 ```dart
 
-// TODO: add the 'mainMenuItems' to the
+// TODO: Step #10 - add the 'mainMenuItems' to the
 // Column's children property
 
 Expanded(
@@ -271,7 +272,7 @@ Your ```Container``` should look like this:
 
 ```dart
 
-// TODO: add the Container widget
+// TODO: Step #11 - add the Container widget
 
 Container(
     width: 70,
@@ -293,7 +294,7 @@ Now, put this newly created widget in place by going up to the ```FlutterAirWelc
 
 ```dart
 
-// TODO: add the created FlutterAirSideMenu 
+// TODO: Step #12 - add the created FlutterAirSideMenu 
 // as a child of the Drawer widget;
 // don't forget to remove the 'const' from the Drawer widget
 

@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,125 +15,7 @@ class FlutterAirApp extends StatelessWidget {
           Theme.of(context).textTheme
         )
       ),
-      home: FlutterAirSplash()
-    );
-  }
-}
-
-class FlutterAirSplash extends StatefulWidget {
-
-  @override
-  FlutterAirSplashState createState() => FlutterAirSplashState();
-}
-
-class FlutterAirSplashState extends State<FlutterAirSplash> {
-  
-  Timer? timer;
-  
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer(const Duration(seconds: 2), () { 
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FlutterAirWelcome())
-      );
-    });
-  }
-
-  @override
-  void dispose() {
-    timer!.cancel();
-    super.dispose();
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    
-    return Scaffold(
-      backgroundColor: Utils.mainThemeColor,
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
-                  children: [
-                    Center(
-                      child: ClipOval(
-                        child: Container(
-                          width: 70,
-                          height: 70,
-                          color: Utils.secondaryThemeColor
-                        )
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(top: 10),
-                      child: const Icon(Icons.flight_takeoff, color: Utils.mainThemeColor, size: 50)
-                    )
-                  ]
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('flutter', style: TextStyle(color: Colors.white, fontSize: 30)),
-                    Text('Air', style: TextStyle(color: Utils.secondaryThemeColor, fontSize: 30))
-                  ]
-                )
-              ]
-            )
-          ),
-          
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox(
-              height: 240,
-              width: MediaQuery.of(context).size.width,
-              child: Stack(
-                children: [
-                  Positioned(
-                    bottom: -20,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 100),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  ),
-                  Positioned(
-                    bottom: -80,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 150),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  ),
-                  Positioned(
-                    bottom: -140,
-                    child: ClipPath(
-                      clipper: ClipPathClass(pos: 200),
-                      child: Container(
-                        color: Colors.white.withOpacity(0.05),
-                        width: MediaQuery.of(context).size.width,
-                        height: 240,
-                      ),
-                    )
-                  )
-                ]
-              )
-            )
-          )
-        ]
-      )
+      home: FlutterAirWelcome()
     );
   }
 }
@@ -218,9 +99,7 @@ class FlutterAirSideBar extends StatelessWidget {
                   )
                 )
               ),
-              const Expanded(
-                child: SizedBox()
-              )
+              const Spacer()
             ]
           )
         )
@@ -507,6 +386,8 @@ class Utils {
   static const int laptopMaxSize = 1024;
   static const int desktopMaxSize = 1200;
 
+  static const int twoColumnLayoutWidth = 600;
+
   static const Color mainThemeColor = Color(0xFF5C1896);
   static const Color secondaryThemeColor = Color(0xFFA677FF);
   static const Color darkThemeColor = Color(0xFF44146E);
@@ -758,25 +639,4 @@ class FlutterAirSideBarItem {
   String? label;
 
   FlutterAirSideBarItem({ this.icon, this.label });
-}
-
-class ClipPathClass extends CustomClipper<Path> {
-  
-  final double? pos;
-  
-  ClipPathClass({ this.pos });
-  
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.moveTo(0.0, size.height - pos!);
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
