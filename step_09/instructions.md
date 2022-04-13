@@ -24,3 +24,11 @@ To learn more about these widgets, and all the Flutter widgets, you can:
 - Visit [flutter.dev](https://flutter.dev)
 - Dive in to our [API Documentation](https://api.flutter.dev/)
 - And check out the [Flutter Youtube channel](https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw) for more tutorials & tips on creating your next great user experience.
+
+## Please don't forget to follow me on social media:
+
+- On Twitter ([@drcoderz](https://www.twitter.com/drcoderz))
+- On YouTube ([Roman Just Codes](https://www.youtube.com/channel/UCKsp3r1ERjCpKJtD2n5WtPg))
+- On My [Personal Portfolio](https://romanjustcodes.web.app/#/home)
+- On [Medium](https://medium.com/@romanejaquez)
+- On [LinkedIn](https://www.linkedin.com/in/roman-jaquez-8941a424/)
