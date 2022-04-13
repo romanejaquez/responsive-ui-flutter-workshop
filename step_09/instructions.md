@@ -25,7 +25,7 @@ To learn more about these widgets, and all the Flutter widgets, you can:
 - Dive in to our [API Documentation](https://api.flutter.dev/)
 - And check out the [Flutter Youtube channel](https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw) for more tutorials & tips on creating your next great user experience.
 
-## Please don't forget to follow me on social media:
+## For similar Flutter content coming from me, here's how you can get in touch with me:
 
 - On Twitter ([@drcoderz](https://www.twitter.com/drcoderz))
 - On YouTube ([Roman Just Codes](https://www.youtube.com/channel/UCKsp3r1ERjCpKJtD2n5WtPg))
