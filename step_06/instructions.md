@@ -4,15 +4,14 @@ Another rule-of-thumb guideline that you can apply to achieve good responsivenes
 
 ## Switching layouts / reordering content as best fits the space available
 
-In this section we'll see how you can change the layout of one of the flight information sections from a row when space is limited, to an additional column when there's more room to expand.
+In this section you'll see how you can change the layout of one of the flight information sections from a row when space is limited, to an additional column when there's more room to expand.
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/layoutswitch.gif)
 
-Let's proceed!
 
-Locate the ```FlutterAirFlightInfo``` widget, and go to the ```return``` statement on its ```build``` method. We are currently just returning a ```Column``` widget; each of its children is a ```Row``` widget.
+Locate the ```FlutterAirFlightInfo``` widget, and go to the ```return``` statement on its ```build``` method. Currently a ```Column``` widget is being returned, and each of its children is a ```Row``` widget.
 
-Take a look at both ```flightInfoColumn``` which is a ```Column``` widget that contains the ```Row``` widgets representing the rows of information. We'll switch the layout from this - a single column with rows:
+Take a look at both ```flightInfoColumn``` which is a ```Column``` widget that contains the ```Row``` widgets representing the rows of information. You'll switch the layout from this - a single column with rows:
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_1.png)
 
@@ -20,9 +19,8 @@ To a two-column layout, where the top row switches to become a column and shifts
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step6_2.png)
 
-Let's execute!
 
-We'll wrap this existing widget structure inside a ```LayoutBuilder``` and return it only if the constraints' ```maxWidth``` is smaller than a specified threshold (which we found our sweet spot to be 600 px), for which we've defined a ```const``` in our ```Utils``` called ```twoColumnLayoutWidth```, so let's do just that:
+Wrap this existing widget structure inside a ```LayoutBuilder``` and return it only if the constraints' ```maxWidth``` is smaller than a specified threshold, for which a ```const``` called ```twoColumnLayoutWidth``` was defined in the ```Utils``` class for this purpose:
 
 ```dart
 
@@ -41,7 +39,7 @@ return LayoutBuilder(
 
 ```
 
-Now return another layout otherwise - when the constraints do not satisfy that condition, i.e. the one when the ```constraints.maxWidth``` are greater than or equals the specified threshold (```Utils.twoColumnLayoutWidth```), as shown below:
+Now return another layout otherwise - when the constraints do not satisfy that condition, i.e. the one when the ```constraints.maxWidth``` is greater than or equals the specified threshold (```Utils.twoColumnLayoutWidth```), as shown below:
 
 ```dart
 
@@ -78,11 +76,11 @@ return LayoutBuilder(
 
 ```
 
-This way, as the user stretches the screen, the ```LayoutBuilder``` widget supplies the available constraints, which get evaluated until it satisfies the corresponding condition, which then gets returned by the build method and thus displayed to the user accordingly.
+This way, as the user stretches the screen, the ```LayoutBuilder``` widget supplies the available constraints, which get evaluated until it satisfies the corresponding condition, then it gets returned by the build method and thus displayed to the user accordingly.
 
-Notice we're making use of the ```Expanded``` widget here, which allows us to distribute the available space in the parent ```Row``` among both child ```Expanded``` widgets. Notice also we're setting the ```flex``` property to 2 on the top one; this gives sizing priority to it when layout space is being distributed, making it twice the available space as the other one. This is a way to achieve fluidity out of the box in Flutter.
+Notice the use of the ```Expanded``` widget here, which allows us to distribute the available space in the parent ```Row``` among both child ```Expanded``` widgets. Notice also the setting of the ```flex``` property to 2 on the top one; this gives sizing priority to it when layout space is being distributed, making it twice the available space as the other one. This is a way to achieve fluidity out of the box in Flutter.
 
-Go ahead now and stretch the **UI Output** panel after hitting ```Run``` on DartPad to see how, as you stretch and shrink the screen and you cross over the 600px threshold established, the layout switches from being a ```Column``` to a ```Row```, and notice the ```Expanded``` widgets in action as the space stretches in a flexible manner, keeping the content flowing on the screen.
+Go ahead now and stretch the **UI Output** panel after hitting ```Run``` on DartPad to see how, as you stretch and shrink the screen and you cross over the threshold established, the layout switches from being a ```Column``` to a ```Row```, and notice the ```Expanded``` widgets in action as the space stretches in a flexible manner, keeping the content flowing on the screen.
 
 
-Note: aside from the predefined breakpoints for all common device screens we set earlier, you can define arbitrary values like the one we defined (```Utils.twoColumnLayoutWidth```), which provide your app with intermediate values that make it trigger required changes and cause adjustments in your app to make it flow better. Use your best judgement in these cases.
+Note: aside from the predefined breakpoints for all common device screens established earlier, you can define arbitrary values like the one defined (```Utils.twoColumnLayoutWidth```), which provide your app with intermediate values that make it trigger required changes and cause adjustments in your app to make it flow better. Use your best judgement in these cases.

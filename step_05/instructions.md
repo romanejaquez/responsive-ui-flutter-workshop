@@ -2,9 +2,9 @@
 
 ## FlutterAir
 
-We'll put in practice the concepts we've mentioned in the previous steps with a simple app called **FlutterAir**  that simulates a online flight reservation experience across multiple devices.
+In this step you'll put into practice the concepts mentioned in the previous steps with a simple app called **FlutterAir**  that simulates a online flight reservation experience across multiple devices.
 
-As the user resizes the screen and simulates the multiple screen sizes in which the app is supported, you'll notice a change in layout and experience - it adapts according to the constraints imposed by the screen to deliver the most optimal user experience.
+As the user resizes the screen and simulates the multiple screen sizes in which the app is supported, you'll notice a change in layout - it adapts according to the constraints imposed by the screen to deliver the most optimal user experience.
 
 You can apply certain rule-of-thumb guidelines when it comes to achieving good responsiveness in your apps, such as:
 
@@ -15,11 +15,9 @@ You should make sure that when you hide content, you provide an alternative on h
 
 In the above image, you see how the sidebar widget either expands when there's room, and shrinks until is not visible for smaller screens. Clicking on the hamburger menu exposes those options on a drawer menu.
 
-Let's work on this.
-
 ## Define the styles for your breakpoints
 
-Let's start by creating a helper class called ```FlutterAirSideBarItemStyles``` that will hold the values for both the icon size and label size at the different breakpoints our app will be supporting. This will allow us, as the application window resizes and the widget rebuilds, to tap into each of the configured styles mapped per breakpoint enum (we'll dive deeper on this on Step #8 of this workshop).
+Start by creating a helper class called ```FlutterAirSideBarItemStyles``` that will hold the values for both the icon size and label size at the different breakpoints your app will be supporting. This will allow you, as the application window resizes and the widget rebuilds, to tap into each of the configured styles mapped per breakpoint enum (Step #8 of this workshop will dive deeper on this approach).
 
 Use the following specs when creating the ```FlutterAirSideBarItemStyles``` class:
 - add two properties:
@@ -44,12 +42,7 @@ class FlutterAirSideBarItemStyles {
 
 ```
 
-Now let's go to the ```Utils``` class, and create a ```static``` **Map** called ```sideBarItemStyles```, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
-
-Build it according to these specs:
-- for ```mobile``` and ```tablet```: set the iconSize to **30** and labelSize to **15**
-- for ```laptop```: set the iconSize to **25** and labelSize to **15**
-- for ```desktop``` and ```tv```: set the iconSize to **25** and labelSize to **20**
+Now go to the ```Utils``` class, and create a ```static``` **Map** called ```sideBarItemStyles```, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
 
 ```dart
 
@@ -75,16 +68,12 @@ static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
     DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 20
-    ),
-    DeviceBreakpoints.tv: FlutterAirSideBarItemStyles(
-       iconSize: 25,
-       labelSize: 20
     )
 };
 
 ```
 
-With that in place, let's proceed and create our custom widget, which we'll call ```FlutterAirSideBar```.
+With that in place, proceed and create a custom widget, called ```FlutterAirSideBar```.
 Create the corresponding class for it and make it extend ```StatelessWidget```. You can use the following snippet to start you off:
 
 ```dart
@@ -100,7 +89,7 @@ class FlutterAirSideBar extends StatelessWidget {
 
 ```
 
-In the steps below, we'll focus only on the ```build``` method of this class.
+In the steps below, you'll focus only on the ```build``` method of this class.
 
 
 As the first thing in this ```build``` method, retrieve the ```sideBarItemStyles``` corresponding to the breakpoint enum obtained by the call ```Utils.getDeviceType``` and passing the context, as follows:
@@ -118,9 +107,9 @@ FlutterAirSideBarItemStyles sideBarItemStyles =
 
 ```
 
-We'll be  using that styles config helper class to populate our side bar widget in a minute.
+You'll be using that styles config helper class to populate your side bar widget in a minute.
 
-Let's start building the structure on this widget, and start by returning a ```Material``` widget with the following specs:
+Start building the structure on this widget by returning a ```Material``` widget with the following specs:
 
 - color: set to ```Utils.secondaryThemeColor```
 - child: a ```Padding``` widget with 8px of padding all around. Add a ```Column``` as its immediate child with an empty ```children``` property.
@@ -147,7 +136,7 @@ return Material(
 
 ```
 
-Let's now focus our attention to that ```Column``` widget - the child of the ```Padding``` widget above.
+Now focus your attention to that ```Column``` widget - the child of the ```Padding``` widget above.
 Inside the ```Column```, add three components:
 - a ```const``` ```SizedBox``` widget, with 20px in height
 - an ```Expanded``` widget wrapping a ```Column``` widget - here we'll place our main content - the icons and labels
@@ -177,7 +166,7 @@ Column(
 
 ```
 
-Let's continue diving right in, now focusing our attention on the nested ```Column``` widget above, inside the first ```Expanded``` widget. Here's where we'll place our icons and labels.
+Continue diving right in, now focusing on the nested ```Column``` widget above, inside the first ```Expanded``` widget, where the icons and labels will go.
 
 
 Ensure that the items in this ```Column``` are left-aligned, and spaced-out with spaces between them:
@@ -198,9 +187,9 @@ Column(
 
 ```
 
-We'll use a pre-created list of items to populate the side bar icons and labels from the ```Utils``` class called ```sideBarItems``` - a collection of object instances of type ```FlutterAirSideBarItem```, each of which contains an ```icon``` and a ```label``` property, already pre-filled for you.
+A pre-created list of items will be used to populate the side bar icons and labels from the ```Utils``` class called ```sideBarItems``` - a collection of object instances of type ```FlutterAirSideBarItem```, each of which contains an ```icon``` and a ```label``` property.
 
-Let's populate the ```Column```'s ***children*** property with this ```Utils.sideBarItems``` collection by using a ```List.generate()``` factory method,  which will receive the collection to iterate on, and hook up to a callback that supplies the ```index``` of the iteration, out of which we'll return a ```Row``` widget, since the icon and label will be placed horizontally, and left-aligned, as follows:
+Populate the ```Column```'s ***children*** property with this ```Utils.sideBarItems``` collection by using a ```List.generate()``` factory method,  which will receive the collection to iterate on, and hook up to a callback that supplies the ```index``` of the iteration, out of which we'll return a ```Row``` widget, since the icon and label will be placed horizontally, and left-aligned, as follows:
 
 ```dart
 
@@ -240,7 +229,7 @@ IconButton(
   icon: Icon(
     Utils.sideBarItems[index].icon, // populate the icon
     color: Colors.white,
-    size: sideBarItemStyles!.iconSize // use the configured style
+    size: sideBarItemStyles.iconSize // use the configured style
   )
 ),
 
@@ -257,7 +246,7 @@ Now, right under the ```IconButton``` widget, add a ```Text``` widget wrapped in
 Padding(
   padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
   child: Text(
-    Utils.sideBarItems[index].label!, 
+    Utils.sideBarItems[index].label, 
     style: TextStyle(
       color: Colors.white,
       fontSize: sideBarItemStyles.labelSize
@@ -285,11 +274,11 @@ body: Row(
 ```
 
 
-Our structure should be all set. If you run this now through DartPad, you will see the ```FlutterAirSideBar``` in place, however if you stretch it, it still shows all the time.
+The structure should be all set. If you run this now through DartPad, you will see the ```FlutterAirSideBar``` in place, however if you stretch it, it still shows all the time.
 
-How do we make it so it only shows only the icons when the screen is larger than ```mobile```, but then show both icons and labels when the screen is larger than ```tablet```?
+How do you make it so it only shows the icons when the screen is larger than ```mobile```, but then show both icons and labels when the screen is larger than ```tablet```?
 
-Let's go back to the top of the structure of the ```FlutterAirSideBar``` widget.
+Go back to the top of the structure of the ```FlutterAirSideBar``` widget.
 
 Wrap the ```Material``` widget inside a ```Visibility``` widget, and set its ```visible``` property to ```true``` only if the screen width is larger than ```mobile```, as such:
 
@@ -310,9 +299,9 @@ return Visibility(
 
 ```
 
-With the code above, we ensure that this widget's hierarchy is only visible under those conditions (i.e. only when larger than ```mobileMaxSize```, otherwise it will be hidden for mobile users).
+With the code above, you ensure that this widget's hierarchy is only visible under those conditions (i.e. only when larger than ```mobileMaxSize```, otherwise it will be hidden for mobile users).
 
-We still haven't taken care of showing the labels if the screen's real estate allows it.
+You still haven't taken care of showing the labels if the screen's real estate allows it.
 
 Go down into this widget's hierarchy and locate the ```Padding``` widget that is wrapping the ```Text``` widget representing the sidebar's label. Wrap this widget inside yet another ```Visibility``` widget, and set its ```visible``` property to ```true``` only if the screen's width is larger than a tablet's screen, as such:
 

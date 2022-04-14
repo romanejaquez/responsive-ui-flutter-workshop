@@ -1,6 +1,6 @@
 # Handling Multiple Screen Sizes
 
-With the increasing amount of devices coming into the market, we're getting to the point in which we're unable to keep up with their resolutions and sizes.
+With the increasing amount of devices coming into the market, it's getting to the point in which is hard to keep up with their resolutions and sizes.
 
 It would result not only cumbersome but impractical to create a version of our UI for each of the multiple platforms Flutter lets you publish your app.
 
@@ -12,11 +12,9 @@ Enter the **breakpoints**!
 
 In responsive design, a breakpoint is the screen size at which a website or app's content and design will adjust in a certain way in order to provide the best possible user experience.
 
-Essentially, breakpoints are pixel values that a developer/designer can define in code. When a responsive app reaches those pixel values, a transformation occurs so that the website offers an optimal user experience for the screen dimensions (in pixels) in which it renders.
+Essentially, breakpoints are pixel values that a developer/designer can define in code. When a responsive app reaches those pixel values, a transformation occurs so that it offers an optimal user experience for the screen dimensions (in pixels) in which it renders.
 
-Let's represent that in our code.
-
-Find the ```Utils``` class in our code and let's start by adding the most common breakpoints that our app should handle based on the devices in which our users will consume our app, ranging from mobile, tablet, laptop, and desktop, as a set of ```const``` values:
+Proceed to find the ```Utils``` class in the code and start by adding the most common breakpoints that your app should handle based on the devices in which your users will consume your app, ranging from mobile, tablet, laptop, and desktop, as a set of ```const``` values:
 
 ```dart
 
@@ -28,16 +26,16 @@ static const int desktopMaxSize = 1200;
 
 ```
 
-These values are to be used as a guideline, using the maximum size available for the device category that match the screen dimensions, that way we can establish a range between them and be a bit more flexible.
+These values are to be used as a guideline, using the maximum size available for the device category that match the screen dimensions, that way you can establish a range between them and be a bit more flexible.
 
-Now let's define an ```enum``` that will map to the corresponding device screen sizes that we're supporting. Place your enum code above the ```Utils``` class if you want.
+Now, define an ```enum``` that will map to the corresponding device screen sizes that you're supporting. Place your enum code above the ```Utils``` class if you want.
 
 ```dart
 
 // Step #2: Add an enum called "DeviceBreakpoints"
 // for the supported device screen sizes; use the following values:
 
-// mobile, tablet, laptop, desktop, tv
+// mobile, tablet, laptop, desktop
 
 // Note: uncomment the Utils.deviceTypes static Map
 // after creating the enum above
@@ -45,9 +43,9 @@ Now let's define an ```enum``` that will map to the corresponding device screen 
 
 Now it is time to establish the relationship between the multiple screen sizes supported by our app and the values queried by the ```MediaQuery.of```, available in ```MediaQueryData.size```.
 
-Let's add an additional ```static``` method to our ```Utils``` class, that takes in a ```BuildContext``` reference, through which we'll pull the ```MediaQuery``` reference inherited by the inquiring widget.
+Add an additional ```static``` method to the existing ```Utils``` class, that takes in a ```BuildContext``` reference, through which you'll be able to pull the ```MediaQuery``` reference inherited by the inquiring widget.
 
-Let's call the method ```getDeviceType```, and return the corresponding enum value created earlier:
+Go ahead and call the method ```getDeviceType```, and return the corresponding enum value created earlier:
 
 ```dart
 
@@ -60,24 +58,18 @@ static DeviceBreakpoints getDeviceType(BuildContext context) {
     // default value is mobile
     DeviceBreakpoints bk = DeviceBreakpoints.mobile;
 
-    // if the data.size.width is greater than "mobileMaxSize"
-    // but less than or equal to "tabletMaxSize", then
-    // my breakpoint will be "tablet"
     if (data.size.width > Utils.mobileMaxSize 
       && data.size.width <= Utils.tabletMaxSize) {
       bk = DeviceBreakpoints.tablet;
     }
 
-    // TODO: ADD THE ELSE-IF LOGIC FOR LAPTOP,
-    // if the width is greater than tabletMaxSize
-    // and less than or equal to laptopMaxSize
+    else if (data.size.width > Utils.laptopMaxSize) {
+      bk = DeviceBreakpoints.desktop;
+    }
 
     // TODO: ADD THE ELSE-IF LOGIC FOR DESKTOP,
     // if the width is greater than laptopMaxSize
     // and less than or equal to desktopMaxSize
-    
-    // TODO: ADD THE ELSE-IF LOGIC FOR TV
-    // if the width is greater than desktopMaxSize
 
     return bk;
   }
@@ -93,7 +85,7 @@ DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
 
 ```
 
-As you notice, we are feeding the **BuildContext** provided to this widget down to the ```Utils.getDeviceType``` method, which internally determines the corresponding device screen size, and returns the corresponding enum for us to do further processing.
+As you notice, you're feeding the **BuildContext** provided to this widget down to the ```Utils.getDeviceType``` method, which internally determines the corresponding device screen size, and returns the corresponding enum for you to do further processing.
 
 Now, using that enum value, extract the value corresponding to it from the ```Utils.deviceTypes``` mapping, which returns a ```DeviceDescription``` object - a model helper class that contains an icon and a label and maps to the matched supported screen type.
 

@@ -42,10 +42,6 @@ class Utils {
     DeviceBreakpoints.desktop: DeviceDescription(
       icon: Icons.desktop_windows,
       label: "Desktop"
-    ),
-    DeviceBreakpoints.tv: DeviceDescription(
-      icon: Icons.tv,
-      label: "Large TV"
     )
   };*/
   

@@ -389,8 +389,7 @@ enum DeviceBreakpoints {
   mobile,
   tablet,
   laptop,
-  desktop,
-  tv
+  desktop
 }
 
 class DeviceDescription {
@@ -423,10 +422,6 @@ class Utils {
     DeviceBreakpoints.desktop: DeviceDescription(
       icon: Icons.desktop_windows,
       label: "Desktop"
-    ),
-    DeviceBreakpoints.tv: DeviceDescription(
-      icon: Icons.tv,
-      label: "Large TV"
     )
   };
   
@@ -445,13 +440,8 @@ class Utils {
       bk = DeviceBreakpoints.laptop;
     }
 
-    else if (data.size.width > Utils.laptopMaxSize &&
-            data.size.width <= Utils.desktopMaxSize) {
+    else if (data.size.width > Utils.laptopMaxSize) {
       bk = DeviceBreakpoints.desktop;
-    }
-    
-    else if (data.size.width > Utils.desktopMaxSize) {
-      bk = DeviceBreakpoints.tv;
     }
 
     return bk;

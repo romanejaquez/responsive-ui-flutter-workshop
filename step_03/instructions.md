@@ -8,8 +8,6 @@ It is similar to the ```Builder``` widget, except that the framework calls the `
 
 Its ```builder``` function is fed both the ```BuildContext``` and a ```BoxConstraints``` instance, from which you can pull the **maxWidth** and **maxHeight**, which after the parent builds, it passes these values to a child for them to know the available dimensions in which they can render.
 
-Let's put it in practice.
-
 First, find a custom widget we created for you called ```LayoutBuilderIndicator```, which should display the space dimensions available to it, then pass it down to its child widgets.
 
 Replace the existing ```Builder``` widget by a ```LayoutBuilder``` widget:
@@ -36,7 +34,7 @@ builder: (context, constraints) {
 
 ```
 
-And now that we have the **constraints** object fed to the builder from the ```LayoutBuilder```, let's extract the ```constraints.maxWidth``` and ```constraints.maxHeight``` values, and store them in the corresponding available local variables ```maxWidth``` and ```maxHeight``` respectively:
+And now that you have the **constraints** object fed to the builder from the ```LayoutBuilder```, extract the ```constraints.maxWidth``` and ```constraints.maxHeight``` values, and store them in the corresponding available local variables ```maxWidth``` and ```maxHeight``` respectively:
 
 ```dart
 

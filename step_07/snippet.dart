@@ -411,8 +411,7 @@ enum DeviceBreakpoints {
   mobile,
   tablet,
   laptop,
-  desktop,
-  tv
+  desktop
 }
 
 class Utils {
@@ -458,14 +457,7 @@ class Utils {
       backgroundColor: Utils.mainThemeColor,
       titleColor: Colors.white,
       titleIconColor: Utils.mainThemeColor,
-    ),
-    DeviceBreakpoints.tv: FlutterAirAppBarStyles(
-      leadingIconBackgroundColor: Utils.darkThemeColor,
-      leadingIconForegroundColor: Colors.white,
-      backgroundColor: Utils.mainThemeColor,
-      titleColor: Colors.white,
-      titleIconColor: Utils.mainThemeColor,
-    ),
+    )
   };
 
   static Map<DeviceBreakpoints, FlutterAirFlightInfoStyles> flightInfoStyles = {
@@ -521,20 +513,7 @@ class Utils {
       flightLineSize: 4,
       flightLineEndRadiusSize: 20,
       secondaryIconSize: 50,
-    ),
-    DeviceBreakpoints.tv: FlutterAirFlightInfoStyles(
-      labelSize: 25,
-      primaryValueSize: 100,
-      secondaryValueSize: 70,
-      tertiaryValueSize: 50,
-      flightIconSize: 70,
-      seatBadgePaddingSize: 30,
-      seatBadgeIconSize: 35,
-      seatBadgetLabelSize: 35,
-      flightLineSize: 4,
-      flightLineEndRadiusSize: 20,
-      secondaryIconSize: 50,
-    ),
+    )
   };
 
   static DeviceBreakpoints getDeviceType(BuildContext context) {
@@ -552,13 +531,8 @@ class Utils {
       bk = DeviceBreakpoints.laptop;
     }
 
-    else if (data.size.width > Utils.laptopMaxSize &&
-            data.size.width <= Utils.desktopMaxSize) {
+    else if (data.size.width > Utils.laptopMaxSize) {
       bk = DeviceBreakpoints.desktop;
-    }
-    
-    else if (data.size.width > Utils.desktopMaxSize) {
-      bk = DeviceBreakpoints.tv;
     }
 
     return bk;
@@ -612,11 +586,7 @@ class Utils {
     DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 20,
-    ),
-    DeviceBreakpoints.tv: FlutterAirSideBarItemStyles(
-       iconSize: 25,
-       labelSize: 20,
-    ),
+    )
   };
 }
 

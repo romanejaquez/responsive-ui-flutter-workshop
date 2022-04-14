@@ -95,7 +95,7 @@ class VerticalSizeIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var height = mediaQueryData!.size.height;
+    var height = mediaQueryData.size.height;
     
     return Stack(
       children: [

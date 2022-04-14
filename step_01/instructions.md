@@ -6,7 +6,7 @@ Responsive Design is the approach that suggests that design and development shou
 
 When a Flutter app is ***responsive***, the widgets adjust based on the size of the screen they are presented on, and programmatically change based on a set of rules given to the rendering platform.
 
-Flutter provides a set of widgets and constructs to achieve responsiveness in our apps out of the box, starting from the ```MediaQuery``` widget.
+Flutter provides a set of widgets and constructs to achieve responsiveness in your apps out of the box, starting from the ```MediaQuery``` widget.
 
 # Using the MediaQuery Widget
 
@@ -18,7 +18,7 @@ Querying the current media using ```MediaQuery.of``` will cause your widget to r
 
 ## Extracting MediaQueryData
 
-In the code on the right, locate the ***TODO*** in the ```TestMediaQueryWidget``` custom widget we created, and insert the following:
+In the code on the right, locate the ***TODO*** in the ```TestMediaQueryWidget``` custom widget created for you, and insert the following:
 
 ```dart
 // Step #1: Put this code in the build() method
@@ -43,7 +43,7 @@ VerticalSizeIndicator(mediaQueryData: data)
 
 ```
 
-Now that we're passing the ```MediaQueryData``` into these widgets, let's pull the size information from it.
+Now that the ```MediaQueryData``` is fed into these widgets, pull the size information from it.
 
 Go to the ```HorizontalSizeIndicator``` widget, and inside its ```build``` method, pull both the width and height out of the provided ```MediaQueryData``` stored in its ```mediaQueryData``` property, and save them on the local variables ```width``` and ```height``` respectively:
 
@@ -59,7 +59,7 @@ var width = 0; // extract the width
 ```
 
 
-Do the same on the ```VerticalSizeIndicator``` widget inside its ```build``` method, but this one only requires only the ```height```:
+Do the same on the ```VerticalSizeIndicator``` widget inside its ```build``` method, but this one only requires the ```height```:
 
 ```dart
 
