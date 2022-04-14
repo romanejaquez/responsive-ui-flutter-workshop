@@ -2,7 +2,7 @@
 
 With the increasing amount of devices coming into the market, it's getting to the point in which is hard to keep up with their resolutions and sizes.
 
-It would result not only cumbersome but impractical to create a version of our UI for each of the multiple platforms Flutter lets you publish your app.
+It would result not only cumbersome but impractical to create a version of your UI for each of the multiple platforms Flutter lets you publish your app.
 
 For that, designers and developers have come up with conventions based on user patterns in media consumption from the most popular devices, target audience, etc.
 
@@ -41,7 +41,7 @@ Now, define an ```enum``` that will map to the corresponding device screen sizes
 // after creating the enum above
 ```
 
-Now it is time to establish the relationship between the multiple screen sizes supported by our app and the values queried by the ```MediaQuery.of```, available in ```MediaQueryData.size```.
+Now it is time to establish the relationship between the multiple screen sizes supported by your app and the values queried by the ```MediaQuery.of```, available in ```MediaQueryData.size```.
 
 Add an additional ```static``` method to the existing ```Utils``` class, that takes in a ```BuildContext``` reference, through which you'll be able to pull the ```MediaQuery``` reference inherited by the inquiring widget.
 
@@ -116,7 +116,7 @@ If you want to see the values for the ```icon``` and ```label``` as widgets, the
 
 ```
 
-Go ahead now an run this on **DartPad** and if you've replaced all code well, you should see in the **UI Output** panel window to the right that, as you stretch horizontally, you will see an icon and a label at the top left corner, corresponding to each of the breakpoints that the screen falls under as we resize. Very useful!
+Go ahead now an run this on **DartPad** and if you've replaced all code well, you should see in the **UI Output** panel window to the right that, as you stretch horizontally, you will see an icon and a label at the top left corner, corresponding to each of the breakpoints that the screen falls under as you resize. Very useful!
 
 ![Breakpoints](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/s2-1.png)
 

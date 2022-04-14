@@ -9,7 +9,7 @@ As the user resizes the screen and simulates the multiple screen sizes in which 
 You can apply certain rule-of-thumb guidelines when it comes to achieving good responsiveness in your apps, such as:
 
 ## Showing content when there's room for it
-You should make sure that when you hide content, you provide an alternative on how to bring it back. This is usually reserved for non-critical content that the user doesn't need to have visible all the time, for example an expandable navigation, that when there's room on the screen we can show all the time, otherwise we can hide it and show it at the click of a button on a smaller screen.
+You should make sure that when you hide content, you provide an alternative on how to bring it back. This is usually reserved for non-critical content that the user doesn't need to have visible all the time, for example an expandable navigation, that when there's room on the screen it can be shown all the time, otherwise it can be hidden, and then shown at the click of a button on a smaller screen.
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/flutterair1.gif)
 
@@ -139,7 +139,7 @@ return Material(
 Now focus your attention to that ```Column``` widget - the child of the ```Padding``` widget above.
 Inside the ```Column```, add three components:
 - a ```const``` ```SizedBox``` widget, with 20px in height
-- an ```Expanded``` widget wrapping a ```Column``` widget - here we'll place our main content - the icons and labels
+- an ```Expanded``` widget wrapping a ```Column``` widget - here you'll place your main content - the icons and labels
 - a ```const``` ```Spacer``` widget, which acts as a placeholder to compete in space with the top ```Expanded``` widget.
 
 Your structure inside the ```Column``` should look like this:
@@ -285,7 +285,7 @@ Wrap the ```Material``` widget inside a ```Visibility``` widget, and set its ```
 ```dart
 
 // Step #12: Use MediaQuery.of(context).size.width to compare the screen's
-// width against our preset mobileMaxSize value:
+// width against your preset mobileMaxSize value:
 
 // ... rest of the code omitted for brevity:
 
@@ -308,7 +308,7 @@ Go down into this widget's hierarchy and locate the ```Padding``` widget that is
 ```dart
 
 // Step #13: Use MediaQuery.of(context).size.width to compare the screen's
-// width against our preset tabletMaxSize value:
+// width against your preset tabletMaxSize value:
 
 // ... rest of the code omitted for brevity:
 

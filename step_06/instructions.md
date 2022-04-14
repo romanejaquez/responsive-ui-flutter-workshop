@@ -31,7 +31,7 @@ Wrap this existing widget structure inside a ```LayoutBuilder``` and return it o
 return LayoutBuilder(
     builder: (context, constraints) {
     
-        // TODO: Step #1 (cont.): if constraints.maxWidth is less than our 
+        // TODO: Step #1 (cont.): if constraints.maxWidth is less than the 
         // predefined "twoColumnLayoutWidth" threshold,
         // then return the existing Column widget as usual
     }
@@ -46,7 +46,7 @@ Now return another layout otherwise - when the constraints do not satisfy that c
 return LayoutBuilder(
     builder: (context, constraints) {
     
-        // TODO: Step #1 (cont.) if constraints.maxWidth is less than our 
+        // TODO: Step #1 (cont.) if constraints.maxWidth is less than the 
         // predefined "twoColumnLayoutWidth" threshold,
         // then return the existing Column widget as usual
         

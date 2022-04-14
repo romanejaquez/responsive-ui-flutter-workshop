@@ -117,7 +117,7 @@ Expanded(
 
 Next, inside the ```SingleChildScrollView```, wrap the ```Padding``` widget containing the ```FlutterAirFlightInfo``` widget in one last widget:  a ```Container``` widget. This is the widget that will adopt the constraints passed down by the ```LayoutBuilder```.
 
-Set the ```Container```'s ```height``` property to be the ```constraints.maxHeight``` to force it to always be the height of the maximum available space; then populate the ```Container```'s ```constraints``` property by creating an instance of ```BoxConstraints``` and populating its ```minHeight``` property with the ```flightInfoStyles.minHeight``` property added earlier, but only if the ```constraints.minHeight``` value is smaller than the preset ```minHeight``` we established earlier. Your ```Container``` structure should look like this:
+Set the ```Container```'s ```height``` property to be the ```constraints.maxHeight``` to force it to always be the height of the maximum available space; then populate the ```Container```'s ```constraints``` property by creating an instance of ```BoxConstraints``` and populating its ```minHeight``` property with the ```flightInfoStyles.minHeight``` property added earlier, but only if the ```constraints.minHeight``` value is smaller than the preset ```minHeight``` established earlier. Your ```Container``` structure should look like this:
 
 ```dart
 
@@ -196,6 +196,6 @@ Expanded(
 
 ```
 
-It does pretty much the same thing as before: the ```LayoutBuilder``` sets the constraints in which the ```Column``` widget should be rendered, then the ```Container``` widget dictates what the minimum height should be based on an optimal preset value, and lastly the ```SingleChildScrollView``` jumps to the rescue so as not to cut off the content but to provide scrolling capabilities to the ```Container``` widget wrapping our structure.
+It does pretty much the same thing as before: the ```LayoutBuilder``` sets the constraints in which the ```Column``` widget should be rendered, then the ```Container``` widget dictates what the minimum height should be based on an optimal preset value, and lastly the ```SingleChildScrollView``` jumps to the rescue so as not to cut off the content but to provide scrolling capabilities to the ```Container``` widget wrapping the structure.
 
 And with that, you've solved the issue of content smooshing against each other, and instead a scrollbar shows automatically when applicable so as to display the content while maintaining flexibility and fluidity.

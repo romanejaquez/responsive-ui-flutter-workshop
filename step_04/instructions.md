@@ -1,6 +1,6 @@
 # Nested LayoutBuilder Widgets
 
-As we saw in the previous step, the ```LayoutBuilder``` dictates how much space their children have at their disposal. 
+As seen in the previous step, the ```LayoutBuilder``` dictates how much space their children have at their disposal. 
 
 And as you may have noticed, the ```MediaQuery``` is great to obtain a high-level view of your app's screen size and available real estate, while ```LayoutBuilder``` is better for widgets further down the tree.
 

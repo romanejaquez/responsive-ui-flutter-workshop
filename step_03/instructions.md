@@ -8,7 +8,7 @@ It is similar to the ```Builder``` widget, except that the framework calls the `
 
 Its ```builder``` function is fed both the ```BuildContext``` and a ```BoxConstraints``` instance, from which you can pull the **maxWidth** and **maxHeight**, which after the parent builds, it passes these values to a child for them to know the available dimensions in which they can render.
 
-First, find a custom widget we created for you called ```LayoutBuilderIndicator```, which should display the space dimensions available to it, then pass it down to its child widgets.
+First, find a custom widget I created for you called ```LayoutBuilderIndicator```, which should display the space dimensions available to it, then pass it down to its child widgets.
 
 Replace the existing ```Builder``` widget by a ```LayoutBuilder``` widget:
 

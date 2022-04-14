@@ -1,21 +1,21 @@
 # Single Source of Truth for Styling
 
-Let's reintroduce the concept of helper classes that consolidate all style changes we want to apply at the different supported breakpoints by our application while implementing the following feature depicted in the image below:
+I'll reintroduce the concept of helper classes that consolidate all style changes needed to be applied at the different supported breakpoints by your application while implementing the following feature depicted in the image below:
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/flutterair2.gif)
 
 Notice how the font size changes as the screen dimensions match the supported breakpoints, and pay specific attention to the side menu widget (i.e. ```Drawer```) that when it is on a larger screen, its background is white and with a bit of content, but when it is on a smaller screen (i.e. mobile) the background changes to purple and more content appears.
 
-This is so that we can provide a tailored experience depending on the device in which our users are consuming the same application. This also makes styling each breakpoint in a streamlined fashion, avoiding the ill-fated amount of "if-else" clauses polluting the UI.
+This is so that a tailored experience can be achieved depending on the device in which your users are consuming the same application. This also makes styling each breakpoint in a streamlined fashion, avoiding the ill-fated amount of "if-else" clauses polluting the UI.
 
 ## Creating a Helper Class
 
 The first thing to do is: determine which are the values in the widget that you want to change and apply programmatically, as opposed to have them hard-coded in the widget or all over the place.
 
 For example, from this widget, you want to change the following properties upon hitting the supported breakpoints:
-- ```backgroundColor``` (type ```Color```): you want the background to change depending on the experience we want to give our users between mobile and desktop
-- ```labelColor``` (type ```Color```): we want to provide a constrast between the background and the colors of the label
-- ```iconBgColor``` (type ```Color```): the icons should match the labels, so we need to have a separate property for them
+- ```backgroundColor``` (type ```Color```): you want the background to change depending on the experience you want to give your users between mobile and desktop
+- ```labelColor``` (type ```Color```): you want to provide a constrast between the background and the colors of the label
+- ```iconBgColor``` (type ```Color```): the icons should match the labels, so you need to have a separate property for them
 - ```iconSize``` (type ```double```): the size of the icon should change depending on the screen size
 - ```labelSize``` (type ```double```): same with the size of the labels
 
@@ -99,10 +99,10 @@ Create a class called ```FlutterAirSideMenu``` that extends ```StatelessWidget``
 
 Proceed by creating a method inside this class that will streamline the creation of the menu items. The method will be called ```getMenuItems``` with the following specs:
 
-- return a ```List<Widget>``` so we can arrange its children as we please
+- return a ```List<Widget>``` so you can arrange its children as you please
 - make it so it takes two parameters:
     - ```items```: type ```List<FlutterAirSideBarItem>```, which represents the menu items to show. We'll use two pre-built lists we've already created for you (for the sake of this tutorial): ```Utils.sideBarItems``` and ```Utils.sideMenuItems```
-    - ```styles```: type ```FlutterAirSideMenuStyles``` so that we can apply the styles programmatically as we build the menu items according to the corresponding style mapping per supported screen
+    - ```styles```: type ```FlutterAirSideMenuStyles``` so that you can apply the styles programmatically as you build the menu items according to the corresponding style mapping per supported screen
 
 Internally this method will just return a list of widgets having the following structure:
 
@@ -218,7 +218,7 @@ Focus now on this child ```Column```, which will be split into two regions: the 
 
 ![SideMenu](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step8_2.png)
 
-Make the items on our column to be left aligned, and have as its two immediate children an ```Expanded``` widget and a ```Container``` widget:
+Make the items on the column to be left aligned, and have as its two immediate children an ```Expanded``` widget and a ```Container``` widget:
 
 ```dart
 

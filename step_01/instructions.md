@@ -30,15 +30,15 @@ MediaQueryData data = MediaQuery.of(context);
 
 This extracts the [```MediaQueryData```](https://api.flutter.dev/flutter/widgets/MediaQueryData-class.html) which contains information about the width and height of the current window, as well as other useful information such as orientation.
 
-Now, feed the ```MediaQueryData``` object into each one our indicator widgets **HorizontalSizeIndicator** and **VerticalSizeIndicator** by populating their ```mediaQueryData``` property:
+Now, feed the ```MediaQueryData``` object into each one of the indicator widgets **HorizontalSizeIndicator** and **VerticalSizeIndicator** by populating their ```mediaQueryData``` property:
 
 ```dart
-// Step #2: populate the mediaQueryData property for our indicator widgets,
+// Step #2: populate the mediaQueryData property for the indicator widgets,
 
-// first, to our HorizontalSizeIndicator widget:
+// first, to the HorizontalSizeIndicator widget:
 HorizontalSizeIndicator(mediaQueryData: data),
 
-// then to our VerticalSizeIndicator widget:
+// then to the VerticalSizeIndicator widget:
 VerticalSizeIndicator(mediaQueryData: data)
 
 ```

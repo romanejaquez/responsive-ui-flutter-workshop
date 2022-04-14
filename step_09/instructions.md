@@ -2,7 +2,7 @@
 
 Kudos to you for making it 'til the end of this workshop. Congrats!!!
 
-In this workshop we learned:
+In this workshop you learned:
 
 - How to create fluid user interfaces using core Flutter widgets
 - How to extract valuable screen information from the ```MediaQueryData`` (i.e. size) 
@@ -22,7 +22,7 @@ And more!
 To learn more about these widgets, and all the Flutter widgets, you can:
 
 - Visit [flutter.dev](https://flutter.dev)
-- Dive in to our [API Documentation](https://api.flutter.dev/)
+- Dive into the Flutter [API Documentation](https://api.flutter.dev/)
 - And check out the [Flutter Youtube channel](https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw) for more tutorials & tips on creating your next great user experience.
 
 ## For similar Flutter content coming from me, here's how you can get in touch with me:
