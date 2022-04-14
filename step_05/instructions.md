@@ -53,10 +53,6 @@ static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
        iconSize: 30,
        labelSize: 15
     ),
-    DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
-       iconSize: 30,
-       labelSize: 15
-    ),
     DeviceBreakpoints.tablet: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
@@ -64,203 +60,24 @@ static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
     DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 15
-    ),
-    DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
-       iconSize: 25,
-       labelSize: 20
     )
 };
 
 ```
 
-With that in place, proceed and create a custom widget, called ```FlutterAirSideBar```.
-Create the corresponding class for it and make it extend ```StatelessWidget```. You can use the following snippet to start you off:
+With that in place, proceed to enable a custom widget, called ```FlutterAirSideBar``` created for you, which consumes the styles you created earlier.
 
 ```dart
 
-// Step #3: custom widget class for the side bar
-class FlutterAirSideBar extends StatelessWidget {
-  
-  @override
-  Widget build(BuildContext context) {
-      // ... rest of the code will go here
-  }
-}
+// Step #3 - enable the FlutterAirSideBar widget
 
 ```
 
-In the steps below, you'll focus only on the ```build``` method of this class.
-
-
-As the first thing in this ```build``` method, retrieve the ```sideBarItemStyles``` corresponding to the breakpoint enum obtained by the call ```Utils.getDeviceType``` and passing the context, as follows:
+Add it to the widget structure, all the way up in the ```FlutterAirWelcome``` widget, as the first child of the ```body```'s ```Row``` widget:
 
 ```dart
 
-// Step #4: add this inside the build method:
-
-// ... rest of the code omitted for brevity 
-
-DeviceBreakpoints deviceType = Utils.getDeviceType(context);
-
-FlutterAirSideBarItemStyles sideBarItemStyles =
-    Utils.sideBarItemStyles[deviceType] as FlutterAirSideBarItemStyles;
-
-```
-
-You'll be using that styles config helper class to populate your side bar widget in a minute.
-
-Start building the structure on this widget by returning a ```Material``` widget with the following specs:
-
-- color: set to ```Utils.secondaryThemeColor```
-- child: a ```Padding``` widget with 8px of padding all around. Add a ```Column``` as its immediate child with an empty ```children``` property.
-
-Your widget structure should start looking like this:
-
-```dart
-
-// Step #5: return a Material widget with the following specs
-
-// ... rest of the code omitted for brevity
-
-return Material(
-    color: Utils.secondaryThemeColor,
-    child: Padding(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          // ... rest of the code here
-        ]
-      )
-    )
-);
-
-```
-
-Now focus your attention to that ```Column``` widget - the child of the ```Padding``` widget above.
-Inside the ```Column```, add three components:
-- a ```const``` ```SizedBox``` widget, with 20px in height
-- an ```Expanded``` widget wrapping a ```Column``` widget - here you'll place your main content - the icons and labels
-- a ```const``` ```Spacer``` widget, which acts as a placeholder to compete in space with the top ```Expanded``` widget.
-
-Your structure inside the ```Column``` should look like this:
-
-```dart
-
-// Step #6: add 3 components inside the Column, as follows:
-
-// ... rest of the code omitted for brevity
-
-Column(
-  children: [
-    const SizedBox(height: 20),
-    Expanded(
-      child: Column(
-        children: [
-          // ... icons and labels will go here
-        ]
-      )
-    ),
-    const Spacer()
-  ]
-)
-
-```
-
-Continue diving right in, now focusing on the nested ```Column``` widget above, inside the first ```Expanded``` widget, where the icons and labels will go.
-
-
-Ensure that the items in this ```Column``` are left-aligned, and spaced-out with spaces between them:
-
-```dart
-
-// Step #7: add maxAxisAlignment of spaceBetween
-// and crossAxisAlignment of start 
-
-// ... rest of the code omitted for brevity
-Column(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    // ... generate icons here
-  ]
-)
-
-```
-
-A pre-created list of items will be used to populate the side bar icons and labels from the ```Utils``` class called ```sideBarItems``` - a collection of object instances of type ```FlutterAirSideBarItem```, each of which contains an ```icon``` and a ```label``` property.
-
-Populate the ```Column```'s ***children*** property with this ```Utils.sideBarItems``` collection by using a ```List.generate()``` factory method,  which will receive the collection to iterate on, and hook up to a callback that supplies the ```index``` of the iteration, out of which we'll return a ```Row``` widget, since the icon and label will be placed horizontally, and left-aligned, as follows:
-
-```dart
-
-// ... rest of the code omitted for brevity
-Column(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  crossAxisAlignment: CrossAxisAlignment.start,
-
-  // Step #8: populate the children property using the Utils.sideBarItems
-  // and a List.generate() factory method
-
-  children: List.generate(Utils.sideBarItems.length, (index) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // ... icons and labels here
-        ]
-      );
-    }
-  )
-)
-
-```
-
-As part of the ```children``` of the ```Row``` widget, add an ```IconButton``` to which you set its ```icon``` property accordingly, extracting the ```Utils.sideBarItem``` item using the corresponding index in the iteration:
-
-```dart
-
-// Step #9: add the following code inside the Row widget,
-// as the first child...
-
-IconButton(
-  color: Utils.secondaryThemeColor,
-  splashColor: Utils.mainThemeColor.withOpacity(0.2),
-  highlightColor: Utils.mainThemeColor.withOpacity(0.2),
-  onPressed: () {},
-  icon: Icon(
-    Utils.sideBarItems[index].icon, // populate the icon
-    color: Colors.white,
-    size: sideBarItemStyles.iconSize // use the configured style
-  )
-),
-
-```
-
-Now, right under the ```IconButton``` widget, add a ```Text``` widget wrapped inside a ```Padding```, and populate the ```Text``` accordingly, using the ```label``` from the corresponding ```Utils.sideBarItems``` item in the iteration, as follows:
-
-
-```dart
-
-// Step #10: add a Text widget with some padding
-// and populate it with the Utils.sideBarItems.label
-
-Padding(
-  padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
-  child: Text(
-    Utils.sideBarItems[index].label, 
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: sideBarItemStyles.labelSize
-    )
-  ),
-)
-
-```
-
-The basic widget is complete. Let's add it to the widget structure, all the way up in the ```FlutterAirWelcome``` widget, as the first child of the ```body```'s ```Row``` widget:
-
-```dart
-
-// Step #11: add the newly created FlutterAirSideBar widget
+// Step #4: add the enabled FlutterAirSideBar widget
 // as a child of the Scaffold's body's Row widget
 
 // ... rest of the code omitted
@@ -274,7 +91,7 @@ body: Row(
 ```
 
 
-The structure should be all set. If you run this now through DartPad, you will see the ```FlutterAirSideBar``` in place, however if you stretch it, it still shows all the time.
+If you run this now through DartPad, you will see the ```FlutterAirSideBar``` in place, however if you stretch it, it still shows all the time.
 
 How do you make it so it only shows the icons when the screen is larger than ```mobile```, but then show both icons and labels when the screen is larger than ```tablet```?
 
@@ -284,7 +101,7 @@ Wrap the ```Material``` widget inside a ```Visibility``` widget, and set its ```
 
 ```dart
 
-// Step #12: Use MediaQuery.of(context).size.width to compare the screen's
+// Step #5: Use MediaQuery.of(context).size.width to compare the screen's
 // width against your preset mobileMaxSize value:
 
 // ... rest of the code omitted for brevity:
@@ -307,7 +124,7 @@ Go down into this widget's hierarchy and locate the ```Padding``` widget that is
 
 ```dart
 
-// Step #13: Use MediaQuery.of(context).size.width to compare the screen's
+// Step #6: Use MediaQuery.of(context).size.width to compare the screen's
 // width against your preset tabletMaxSize value:
 
 // ... rest of the code omitted for brevity:

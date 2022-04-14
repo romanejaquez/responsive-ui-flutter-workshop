@@ -14,7 +14,7 @@ In responsive design, a breakpoint is the screen size at which a website or app'
 
 Essentially, breakpoints are pixel values that a developer/designer can define in code. When a responsive app reaches those pixel values, a transformation occurs so that it offers an optimal user experience for the screen dimensions (in pixels) in which it renders.
 
-Proceed to find the ```Utils``` class in the code and start by adding the most common breakpoints that your app should handle based on the devices in which your users will consume your app, ranging from mobile, tablet, laptop, and desktop, as a set of ```const``` values:
+Proceed to find the ```Utils``` class in the code and start by adding the most common breakpoints that your app should handle based on the devices in which your users will consume your app, ranging from mobile, tablet, and laptop, as a set of ```const``` values:
 
 ```dart
 
@@ -22,7 +22,6 @@ Proceed to find the ```Utils``` class in the code and start by adding the most c
 static const int mobileMaxSize = 480;
 static const int tabletMaxSize = 768;
 static const int laptopMaxSize = 1024;
-static const int desktopMaxSize = 1200;
 
 ```
 
@@ -35,7 +34,7 @@ Now, define an ```enum``` that will map to the corresponding device screen sizes
 // Step #2: Add an enum called "DeviceBreakpoints"
 // for the supported device screen sizes; use the following values:
 
-// mobile, tablet, laptop, desktop
+// mobile, tablet, laptop
 
 // Note: uncomment the Utils.deviceTypes static Map
 // after creating the enum above
@@ -63,13 +62,9 @@ static DeviceBreakpoints getDeviceType(BuildContext context) {
       bk = DeviceBreakpoints.tablet;
     }
 
-    else if (data.size.width > Utils.laptopMaxSize) {
-      bk = DeviceBreakpoints.desktop;
+    else if (data.size.width > Utils.tabletMaxSize) {
+      bk = DeviceBreakpoints.laptop;
     }
-
-    // TODO: ADD THE ELSE-IF LOGIC FOR DESKTOP,
-    // if the width is greater than laptopMaxSize
-    // and less than or equal to desktopMaxSize
 
     return bk;
   }

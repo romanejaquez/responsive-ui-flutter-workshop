@@ -505,8 +505,7 @@ class FlutterAirAppHeaderTitle extends StatelessWidget {
 enum DeviceBreakpoints {
   mobile,
   tablet,
-  laptop,
-  desktop
+  laptop
 }
 
 class Utils {
@@ -514,7 +513,7 @@ class Utils {
   static const int mobileMaxSize = 480;
   static const int tabletMaxSize = 768;
   static const int laptopMaxSize = 1024;
-  static const int desktopMaxSize = 1200;
+  
 
   static const int twoColumnLayoutWidth = 600;
 
@@ -540,13 +539,6 @@ class Utils {
       titleIconColor: Utils.mainThemeColor,
     ),
     DeviceBreakpoints.laptop: FlutterAirAppBarStyles(
-      leadingIconBackgroundColor: Utils.darkThemeColor,
-      leadingIconForegroundColor: Colors.white,
-      backgroundColor: Utils.mainThemeColor,
-      titleColor: Colors.white,
-      titleIconColor: Utils.mainThemeColor,
-    ),
-    DeviceBreakpoints.desktop: FlutterAirAppBarStyles(
       leadingIconBackgroundColor: Utils.darkThemeColor,
       leadingIconForegroundColor: Colors.white,
       backgroundColor: Utils.mainThemeColor,
@@ -597,20 +589,6 @@ class Utils {
       flightLineEndRadiusSize: 15,
       secondaryIconSize: 30,
       minHeight: 500
-    ),
-    DeviceBreakpoints.desktop: FlutterAirFlightInfoStyles(
-      labelSize: 25,
-      primaryValueSize: 100,
-      secondaryValueSize: 70,
-      tertiaryValueSize: 50,
-      flightIconSize: 70,
-      seatBadgePaddingSize: 30,
-      seatBadgeIconSize: 35,
-      seatBadgetLabelSize: 35,
-      flightLineSize: 4,
-      flightLineEndRadiusSize: 20,
-      secondaryIconSize: 50,
-      minHeight: 500
     )
   };
 
@@ -636,13 +614,6 @@ class Utils {
         iconSize: 30,
         labelSize: 20,
         iconBgColor: Utils.secondaryThemeColor
-      ),
-      DeviceBreakpoints.desktop: FlutterAirSideMenuStyles(
-        backgroundColor: Colors.white,
-        labelColor: Utils.darkThemeColor,
-        iconSize: 30,
-        labelSize: 20,
-        iconBgColor: Utils.secondaryThemeColor
       )
     };
 
@@ -656,13 +627,8 @@ class Utils {
       bk = DeviceBreakpoints.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize 
-      && data.size.width <= Utils.laptopMaxSize) {
+    else if (data.size.width > Utils.tabletMaxSize) {
       bk = DeviceBreakpoints.laptop;
-    }
-
-    else if (data.size.width > Utils.laptopMaxSize) {
-      bk = DeviceBreakpoints.desktop;
     }
 
     return bk;
@@ -712,11 +678,6 @@ class Utils {
     DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 15,
-       minHeight: 200
-    ),
-    DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
-       iconSize: 25,
-       labelSize: 20,
        minHeight: 200
     )
   };

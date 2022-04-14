@@ -41,7 +41,7 @@ Go to the helper class called ```FlutterAirFlightInfoStyles``` which defines all
 // constructor param as well (required)
 ```
 
-Next, go to the ```Utils``` class and locate its corresponding mapping called ```flightInfoStyles```, and under each of the supported device breakpoints mapping, set the ```minHeight``` value to 500px for all of them (mobile, tablet, laptop, and desktop) - let's start with that value, then you can adjust accordingly.
+Next, go to the ```Utils``` class and locate its corresponding mapping called ```flightInfoStyles```, and under each of the supported device breakpoints mapping, set the ```minHeight``` value to 500px for all of them (mobile, tablet, and laptop) - let's start with that value, then you can adjust accordingly.
 
 ```dart
 // TODO: Step #2 - populate the values in the "flightInfoStyles" mapping
@@ -50,23 +50,7 @@ Next, go to the ```Utils``` class and locate its corresponding mapping called ``
 
 With that in place, proceed to tackle the widget structure.
 
-Start by importing the updated flight info styles mapping at the top of the ```build``` method of the ```FlutterAirWelcome``` widget, as such:
-
-```dart
-
-@override
-Widget build(BuildContext context) {
-
-    // TODO: Step #3 - add this at the top of the build method in the 
-    // FlutterAirWelcome widget
-
-    FlutterAirFlightInfoStyles flightInfoStyles = 
-        Utils.flightInfoStyles[Utils.getDeviceType(context)] as FlutterAirFlightInfoStyles;
-
-    // ... rest of the code omitted for brevity
-}
-    
-```
+The updated flight info styles mapping is already being referenced for you at the top of the ```build``` method of the ```FlutterAirWelcome``` widget, so you're all set there.
 
 This method is currently returning a ```Scaffold``` widget. Inside the ```Scaffold```'s structure, find the ```Padding``` widget currently wrapping the ```FlutterAirFlightInfo``` widget.
 
@@ -75,7 +59,7 @@ Then, proceed to wrap the ```Padding``` widget above inside a ```LayoutBuilder``
 
 ```dart
 
-// TODO: Step #4 - wrap the Padding widget enclosing the
+// TODO: Step #3 - wrap the Padding widget enclosing the
 // FlutterAirFlightInfo widget inside a LayoutBuilder
 // so the constraints can be extracted
 
@@ -103,7 +87,7 @@ Expanded(
     child: LayoutBuilder(
         builder: (context, constraints) {
 
-            // TODO: Step #5 - wrap the returning Padding with a
+            // TODO: Step #4 - wrap the returning Padding with a
             // SingleChildScrollView
             return SingleChildScrollView(
                 controller: ScrollController(),
@@ -123,7 +107,7 @@ Set the ```Container```'s ```height``` property to be the ```constraints.maxHeig
 
 // ... rest of the code omitted for brevity
 
-// TODO: Step #6 - wrap the Padding inside a Container
+// TODO: Step #5 - wrap the Padding inside a Container
 // and set its constraints and height accordingly
 Container(
     // set the height
@@ -140,62 +124,5 @@ Container(
     child: // Padding widget stays the same,
 )
 ```
-
-## Applying the same strategy to the FlutterAirSideBar widget
-
-If you do the shrinking on the page once again, the yellow and black line error indicators have been fixed on the flight info in the main region of the page; now it's time to take care of it on the side bar widget, following pretty much the same approach.
-
-Start by locating the side bar item styles helper class called ```FlutterAirSideBarItemStyles``` and add a new property called ```minHeight```, also type ```double```. Add its corresponding named constructor parameter to it.
-
-```dart
-
-// TODO: Step #7 - go to the "FlutterAirSideBarItemStyles" class
-// and also add an additional property called "minHeight",
-// make it type double; add its named constructor parameter as well
-
-```
-
-Next, go to the ```Utils``` class and locate its corresponding mapping called ```sideBarItemStyles```, and under each of the supported device breakpoints mapping, set the ```minHeight``` value to 200px for all of them (mobile, tablet, laptop, and desktop) - let's start with that value, then you can adjust according to what you think the optimal viewport for your sidebar is at any given breakpoint.
-
-```dart
-
-// TODO: Step #8 - go to the Utils.sideBarItemStyles and set
-// the "minHeight" property on all mappings to 200px
-// as an initial value to start with
-
-```
-
-
-Now go back to the ```FlutterAirSideBar``` widget - no need to import the ```sidebarItemStyles``` here since it's being done already.
-
-Inside its ```build``` method, locate the ```Column``` widget that is consuming the ```Utils.sideBarItems``` via the ```List.generate``` factory method, and wrap it inside the following structure:
-
-```dart
-
-// Structure inside the FlutterAirSideBar widget:
-
-// TODO: Step #9 - wrap the Column widget inside the following
-// structure, as in the FlutterAirWelcome widget
-Expanded( 
-  child: LayoutBuilder(
-    builder: (context, constraints) {
-      return SingleChildScrollView(
-          controller: ScrollController(),
-          child: Container(
-            height: constraints.maxHeight,
-            constraints: BoxConstraints(
-                minHeight: 
-                    constraints.minHeight < sideBarItemStyles.minHeight ?
-                    sideBarItemStyles.minHeight : constraints.minHeight),
-            child: // Column widget remains the same
-          )
-      );
-    }
-  )
-)
-
-```
-
-It does pretty much the same thing as before: the ```LayoutBuilder``` sets the constraints in which the ```Column``` widget should be rendered, then the ```Container``` widget dictates what the minimum height should be based on an optimal preset value, and lastly the ```SingleChildScrollView``` jumps to the rescue so as not to cut off the content but to provide scrolling capabilities to the ```Container``` widget wrapping the structure.
 
 And with that, you've solved the issue of content smooshing against each other, and instead a scrollbar shows automatically when applicable so as to display the content while maintaining flexibility and fluidity.

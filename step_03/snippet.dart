@@ -348,8 +348,7 @@ class VerticalSizeIndicator extends StatelessWidget {
 enum DeviceBreakpoints {
   mobile,
   tablet,
-  laptop,
-  desktop
+  laptop
 }
 
 class DeviceDescription {
@@ -364,7 +363,6 @@ class Utils {
   static const int mobileMaxSize = 480;
   static const int tabletMaxSize = 768;
   static const int laptopMaxSize = 1024;
-  static const int desktopMaxSize = 1200;
   
   static Map<DeviceBreakpoints, DeviceDescription> deviceTypes = {
     DeviceBreakpoints.mobile: DeviceDescription(
@@ -378,10 +376,6 @@ class Utils {
     DeviceBreakpoints.laptop: DeviceDescription(
       icon: Icons.laptop_mac,
       label: "Laptop"
-    ),
-    DeviceBreakpoints.desktop: DeviceDescription(
-      icon: Icons.desktop_windows,
-      label: "Desktop"
     )
   };
   
@@ -395,13 +389,8 @@ class Utils {
       bk = DeviceBreakpoints.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize 
-      && data.size.width <= Utils.laptopMaxSize) {
+    else if (data.size.width > Utils.tabletMaxSize) {
       bk = DeviceBreakpoints.laptop;
-    }
-
-    else if (data.size.width > Utils.laptopMaxSize) {
-      bk = DeviceBreakpoints.desktop;
     }
 
     return bk;

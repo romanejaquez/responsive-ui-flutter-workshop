@@ -38,10 +38,6 @@ class Utils {
     DeviceBreakpoints.laptop: DeviceDescription(
       icon: Icons.laptop_mac,
       label: "Laptop"
-    ),
-    DeviceBreakpoints.desktop: DeviceDescription(
-      icon: Icons.desktop_windows,
-      label: "Desktop"
     )
   };*/
   

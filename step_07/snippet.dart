@@ -21,11 +21,12 @@ class FlutterAirApp extends StatelessWidget {
 }
 
 class FlutterAirWelcome extends StatelessWidget {
-  
-  // TODO: Step #3 - add the flightInfoStyles here
 
   @override
   Widget build(BuildContext context) {
+
+    FlutterAirFlightInfoStyles flightInfoStyles
+      = Utils.flightInfoStyles[Utils.getDeviceType(context)] as FlutterAirFlightInfoStyles;
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -36,7 +37,7 @@ class FlutterAirWelcome extends StatelessWidget {
           FlutterAirSideBar(),
           Expanded(
 
-            // TODO: Step #4: start building the main region 
+            // TODO: Step #3: start building the main region 
             // structure from this point forward, wrapping
             // the Padding widget below
 
@@ -71,44 +72,54 @@ class FlutterAirSideBar extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               Expanded(
-
-                // TODO: Step #9 - start adding the side bar structure
-                // from this point forward
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(Utils.sideBarItems.length, (index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          IconButton(
-                            color: Utils.secondaryThemeColor,
-                            splashColor: Utils.mainThemeColor.withOpacity(0.2),
-                            highlightColor: Utils.mainThemeColor.withOpacity(0.2),
-                            onPressed: () {},
-                            icon: Icon(
-                              Utils.sideBarItems[index].icon, // populate the icon
-                              color: Colors.white,
-                              size: sideBarItemStyles.iconSize // use the configured style
-                            )
-                          ),
-                          Visibility(
-                            visible: MediaQuery.of(context).size.width > Utils.tabletMaxSize,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
-                              child: Text(
-                                Utils.sideBarItems[index].label, 
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: sideBarItemStyles.labelSize
-                                )
-                              ),
-                            )
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      controller: ScrollController(),
+                      child: Container(
+                        height: constraints.maxHeight,
+                        constraints: BoxConstraints(
+                          minHeight: constraints.minHeight < sideBarItemStyles.minHeight ? 
+                            sideBarItemStyles.minHeight : constraints.minHeight),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: List.generate(Utils.sideBarItems.length, (index) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                    color: Utils.secondaryThemeColor,
+                                    splashColor: Utils.mainThemeColor.withOpacity(0.2),
+                                    highlightColor: Utils.mainThemeColor.withOpacity(0.2),
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Utils.sideBarItems[index].icon, // populate the icon
+                                      color: Colors.white,
+                                      size: sideBarItemStyles.iconSize // use the configured style
+                                    )
+                                  ),
+                                  Visibility(
+                                    visible: MediaQuery.of(context).size.width > Utils.tabletMaxSize,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
+                                      child: Text(
+                                        Utils.sideBarItems[index].label, 
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: sideBarItemStyles.labelSize
+                                        )
+                                      ),
+                                    )
+                                  )
+                                ]
+                              );
+                            }
                           )
-                        ]
-                      );
-                    }
-                  )
+                        ),
+                      ),
+                    );
+                  }
                 )
               ),
               const Spacer()
@@ -410,8 +421,7 @@ class FlutterAirAppHeaderTitle extends StatelessWidget {
 enum DeviceBreakpoints {
   mobile,
   tablet,
-  laptop,
-  desktop
+  laptop
 }
 
 class Utils {
@@ -419,7 +429,7 @@ class Utils {
   static const int mobileMaxSize = 480;
   static const int tabletMaxSize = 768;
   static const int laptopMaxSize = 1024;
-  static const int desktopMaxSize = 1200;
+  
 
   static const int twoColumnLayoutWidth = 600;
 
@@ -445,13 +455,6 @@ class Utils {
       titleIconColor: Utils.mainThemeColor,
     ),
     DeviceBreakpoints.laptop: FlutterAirAppBarStyles(
-      leadingIconBackgroundColor: Utils.darkThemeColor,
-      leadingIconForegroundColor: Colors.white,
-      backgroundColor: Utils.mainThemeColor,
-      titleColor: Colors.white,
-      titleIconColor: Utils.mainThemeColor,
-    ),
-    DeviceBreakpoints.desktop: FlutterAirAppBarStyles(
       leadingIconBackgroundColor: Utils.darkThemeColor,
       leadingIconForegroundColor: Colors.white,
       backgroundColor: Utils.mainThemeColor,
@@ -500,19 +503,6 @@ class Utils {
       flightLineSize: 4,
       flightLineEndRadiusSize: 15,
       secondaryIconSize: 30,
-    ),
-    DeviceBreakpoints.desktop: FlutterAirFlightInfoStyles(
-      labelSize: 25,
-      primaryValueSize: 100,
-      secondaryValueSize: 70,
-      tertiaryValueSize: 50,
-      flightIconSize: 70,
-      seatBadgePaddingSize: 30,
-      seatBadgeIconSize: 35,
-      seatBadgetLabelSize: 35,
-      flightLineSize: 4,
-      flightLineEndRadiusSize: 20,
-      secondaryIconSize: 50,
     )
   };
 
@@ -526,13 +516,8 @@ class Utils {
       bk = DeviceBreakpoints.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize 
-      && data.size.width <= Utils.laptopMaxSize) {
+    else if (data.size.width > Utils.tabletMaxSize) {
       bk = DeviceBreakpoints.laptop;
-    }
-
-    else if (data.size.width > Utils.laptopMaxSize) {
-      bk = DeviceBreakpoints.desktop;
     }
 
     return bk;
@@ -569,23 +554,20 @@ class Utils {
   ];
 
   static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
-    // TODO: Step #8 - set the minHeight to 200 on all mappings below
     DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15,
-       
+       minHeight: 200
     ),
     DeviceBreakpoints.tablet: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15,
+       minHeight: 200
     ),
     DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 15,
-    ),
-    DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
-       iconSize: 25,
-       labelSize: 20,
+       minHeight: 200
     )
   };
 }
@@ -618,8 +600,8 @@ class FlutterAirFlightInfoStyles {
   final double flightLineSize;
   final double flightLineEndRadiusSize;
   final double secondaryIconSize;
-  // TODO: Step #1 - add additional final property called
-  // "minHeight", type double
+  // TODO: Step #1 - add additional final property
+  // called "minHeight", type double
 
   FlutterAirFlightInfoStyles({
     required this.labelSize,
@@ -633,20 +615,20 @@ class FlutterAirFlightInfoStyles {
     required this.flightLineSize,
     required this.flightLineEndRadiusSize,
     required this.secondaryIconSize,
-    // TODO:  Step #1 - (cont.) add named parameter to property "minHeight"
+    // TODO:  Step #1 - (cont.) add named parameter
+    // for property "minHeight", required
   });
 }
 
 class FlutterAirSideBarItemStyles {
   final double iconSize;
   final double labelSize;
-  // TODO: Step #7 - add additional final property called
-  // "minHeight", type double
+  final double minHeight;
 
   FlutterAirSideBarItemStyles({
     required this.iconSize,
     required this.labelSize,
-    // TODO: Step #7 (cont.) - add named parameter to property "minHeight"
+    required this.minHeight
   });
 }
 
