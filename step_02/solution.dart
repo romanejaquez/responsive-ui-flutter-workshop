@@ -122,10 +122,10 @@ class DeviceScreenIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     
     DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
-    DeviceDescription? deviceDesc = Utils.deviceTypes[deviceBreakpoint];
+    DeviceDescription deviceDesc = Utils.deviceTypes[deviceBreakpoint] as DeviceDescription;
 
-    IconData? icon = deviceDesc!.icon;
-    String? label = deviceDesc.label;
+    IconData icon = deviceDesc.icon;
+    String label = deviceDesc.label;
     
     return Align(
       alignment: Alignment.topLeft,
@@ -136,7 +136,7 @@ class DeviceScreenIndicator extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.blueAccent, size: 70),
             const SizedBox(height: 20),
-            Text(label!, 
+            Text(label, 
               style: const TextStyle(color: Colors.blueAccent, fontSize: 20)
             )
           ]
@@ -148,15 +148,15 @@ class DeviceScreenIndicator extends StatelessWidget {
 
 class HorizontalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const HorizontalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const HorizontalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
-    var height = mediaQueryData!.size.height;
-    var width = mediaQueryData!.size.width;
+    var height = mediaQueryData.size.height;
+    var width = mediaQueryData.size.width;
 
     return Stack(
       children: [
@@ -203,14 +203,14 @@ class HorizontalSizeIndicator extends StatelessWidget {
 
 class VerticalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const VerticalSizeIndicator({ Key? key, this.mediaQueryData }) : super(key: key);
+  const VerticalSizeIndicator({ Key? key, required this.mediaQueryData }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    var height = mediaQueryData!.size.height;
+    var height = mediaQueryData.size.height;
     
     return Stack(
       children: [
@@ -257,8 +257,8 @@ class VerticalSizeIndicator extends StatelessWidget {
 }
 
 class DeviceDescription {
-  IconData? icon;
-  String? label;
+  final IconData icon;
+  final String label;
   
-  DeviceDescription({ this.icon, this.label });
+  DeviceDescription({ required this.icon, required this.label });
 }

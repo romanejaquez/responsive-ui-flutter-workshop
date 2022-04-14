@@ -25,7 +25,8 @@ class FlutterAirWelcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    FlutterAirFlightInfoStyles? flightInfoStyles = Utils.flightInfoStyles[Utils.getDeviceType(context)];
+    FlutterAirFlightInfoStyles flightInfoStyles
+      = Utils.flightInfoStyles[Utils.getDeviceType(context)] as FlutterAirFlightInfoStyles;
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -42,8 +43,8 @@ class FlutterAirWelcome extends StatelessWidget {
                   child: Container(
                         height: constraints.maxHeight,
                         constraints: BoxConstraints(
-                          minHeight: constraints.minHeight < flightInfoStyles!.minHeight! ? 
-                        flightInfoStyles.minHeight! : constraints.minHeight),
+                          minHeight: constraints.minHeight < flightInfoStyles.minHeight ? 
+                            flightInfoStyles.minHeight : constraints.minHeight),
                         child: Padding(
                       padding: const EdgeInsets.all(50),
                       child: FlutterAirFlightInfo()
@@ -65,7 +66,8 @@ class FlutterAirSideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     
     DeviceBreakpoints deviceType = Utils.getDeviceType(context);
-    FlutterAirSideBarItemStyles? sideBarItemStyles = Utils.sideBarItemStyles[deviceType];
+    FlutterAirSideBarItemStyles sideBarItemStyles
+      = Utils.sideBarItemStyles[deviceType] as FlutterAirSideBarItemStyles;
     
     return Visibility(
       visible: MediaQuery.of(context).size.width > Utils.mobileMaxSize,
@@ -84,8 +86,8 @@ class FlutterAirSideBar extends StatelessWidget {
                       child: Container(
                         height: constraints.maxHeight,
                         constraints: BoxConstraints(
-                          minHeight: constraints.minHeight < sideBarItemStyles!.minHeight! ? 
-                        sideBarItemStyles.minHeight! : constraints.minHeight),
+                          minHeight: constraints.minHeight < sideBarItemStyles.minHeight ? 
+                            sideBarItemStyles.minHeight : constraints.minHeight),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +111,7 @@ class FlutterAirSideBar extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
                                       child: Text(
-                                        Utils.sideBarItems[index].label!, 
+                                        Utils.sideBarItems[index].label, 
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: sideBarItemStyles.labelSize
@@ -141,7 +143,8 @@ class FlutterAirFlightInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    FlutterAirFlightInfoStyles? flightInfoStyles = Utils.flightInfoStyles[Utils.getDeviceType(context)];
+    FlutterAirFlightInfoStyles flightInfoStyles
+      = Utils.flightInfoStyles[Utils.getDeviceType(context)] as FlutterAirFlightInfoStyles;
     
     Column flightInfoColumn = Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +155,7 @@ class FlutterAirFlightInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Origin', style: TextStyle(color: Utils.normalLabelColor, fontSize: flightInfoStyles!.labelSize)),
+                  Text('Origin', style: TextStyle(color: Utils.normalLabelColor, fontSize: flightInfoStyles.labelSize)),
                   Text('BOS', style: TextStyle(color: Utils.normalLabelColor, fontSize: flightInfoStyles.primaryValueSize))
                 ]
               ),
@@ -176,11 +179,11 @@ class FlutterAirFlightInfo extends StatelessWidget {
                           height: flightInfoStyles.flightLineEndRadiusSize,
                           margin: const EdgeInsets.only(top: 20, left: 10),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(flightInfoStyles.flightLineEndRadiusSize!),
+                            borderRadius: BorderRadius.circular(flightInfoStyles.flightLineEndRadiusSize),
                             color: Colors.white,
                             border: Border.all(
                               color: Utils.lightPurpleColor.withOpacity(0.3),
-                              width: flightInfoStyles.flightLineSize!
+                              width: flightInfoStyles.flightLineSize
                             )
                           ),
                         )
@@ -192,11 +195,11 @@ class FlutterAirFlightInfo extends StatelessWidget {
                           height: flightInfoStyles.flightLineEndRadiusSize,
                           margin: const EdgeInsets.only(top: 20, right: 10),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(flightInfoStyles.flightLineEndRadiusSize!),
+                            borderRadius: BorderRadius.circular(flightInfoStyles.flightLineEndRadiusSize),
                             color: Colors.white,
                             border: Border.all(
                               color: Utils.lightPurpleColor.withOpacity(0.3),
-                              width: flightInfoStyles.flightLineSize!
+                              width: flightInfoStyles.flightLineSize
                             )
                           ),
                         )
@@ -301,10 +304,10 @@ class FlutterAirFlightInfo extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(
-              top: flightInfoStyles.seatBadgePaddingSize! / 2, 
-              bottom: flightInfoStyles.seatBadgePaddingSize! / 2, 
-              left: flightInfoStyles.seatBadgePaddingSize!, 
-              right: flightInfoStyles.seatBadgePaddingSize!
+              top: flightInfoStyles.seatBadgePaddingSize / 2, 
+              bottom: flightInfoStyles.seatBadgePaddingSize / 2, 
+              left: flightInfoStyles.seatBadgePaddingSize, 
+              right: flightInfoStyles.seatBadgePaddingSize
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -366,10 +369,11 @@ class FlutterAirAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
 
-    FlutterAirAppBarStyles? appBarStyles = Utils.appBarStyles[Utils.getDeviceType(context)];
+    FlutterAirAppBarStyles appBarStyles
+      = Utils.appBarStyles[Utils.getDeviceType(context)] as FlutterAirAppBarStyles;
     
     return AppBar(
-      backgroundColor: appBarStyles!.backgroundColor,
+      backgroundColor: appBarStyles.backgroundColor,
       elevation: 0,
       title: FlutterAirAppHeaderTitle(),
       leading:  Builder(
@@ -398,7 +402,8 @@ class FlutterAirAppHeaderTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    FlutterAirAppBarStyles? appBarStyles = Utils.appBarStyles[Utils.getDeviceType(context)];
+    FlutterAirAppBarStyles appBarStyles
+      = Utils.appBarStyles[Utils.getDeviceType(context)] as FlutterAirAppBarStyles;
     
     return Row(
       children: [
@@ -409,7 +414,7 @@ class FlutterAirAppHeaderTitle extends StatelessWidget {
             color: Utils.secondaryThemeColor,
             borderRadius: BorderRadius.circular(20)
           ),
-          child: Icon(Icons.flight_takeoff, color: appBarStyles!.titleIconColor, size: 20)
+          child: Icon(Icons.flight_takeoff, color: appBarStyles.titleIconColor, size: 20)
         ),
         const SizedBox(width: 10),
         Text('Welcome', style: TextStyle(fontSize: 18, color: appBarStyles.titleColor))
@@ -641,64 +646,66 @@ class Utils {
 }
 
 class FlutterAirAppBarStyles {
-  Color? leadingIconBackgroundColor;
-  Color? leadingIconForegroundColor;
-  Color? backgroundColor;
-  Color? titleColor;
-  Color? titleIconColor;
+  final Color leadingIconBackgroundColor;
+  final Color leadingIconForegroundColor;
+  final Color backgroundColor;
+  final Color titleColor;
+  final Color titleIconColor;
 
   FlutterAirAppBarStyles({
-    this.leadingIconBackgroundColor,
-    this.leadingIconForegroundColor,
-    this.backgroundColor,
-    this.titleColor,
-    this.titleIconColor
+    required this.leadingIconBackgroundColor,
+    required this.leadingIconForegroundColor,
+    required this.backgroundColor,
+    required this.titleColor,
+    required this.titleIconColor
   });
 }
 
 class FlutterAirFlightInfoStyles {
-  double? labelSize;
-  double? primaryValueSize;
-  double? secondaryValueSize;
-  double? tertiaryValueSize;
-  double? flightIconSize;
-  double? seatBadgePaddingSize;
-  double? seatBadgeIconSize;
-  double? seatBadgetLabelSize;
-  double? flightLineSize;
-  double? flightLineEndRadiusSize;
-  double? secondaryIconSize;
-  double? minHeight;
+  final double labelSize;
+  final double primaryValueSize;
+  final double secondaryValueSize;
+  final double tertiaryValueSize;
+  final double flightIconSize;
+  final double seatBadgePaddingSize;
+  final double seatBadgeIconSize;
+  final double seatBadgetLabelSize;
+  final double flightLineSize;
+  final double flightLineEndRadiusSize;
+  final double secondaryIconSize;
+  final double minHeight;
 
   FlutterAirFlightInfoStyles({
-    this.labelSize,
-    this.primaryValueSize,
-    this.secondaryValueSize,
-    this.tertiaryValueSize,
-    this.flightIconSize,
-    this.seatBadgeIconSize,
-    this.seatBadgePaddingSize,
-    this.seatBadgetLabelSize,
-    this.flightLineSize,
-    this.flightLineEndRadiusSize,
-    this.secondaryIconSize,
-    this.minHeight
+    required this.labelSize,
+    required this.primaryValueSize,
+    required this.secondaryValueSize,
+    required this.tertiaryValueSize,
+    required this.flightIconSize,
+    required this.seatBadgeIconSize,
+    required this.seatBadgePaddingSize,
+    required this.seatBadgetLabelSize,
+    required this.flightLineSize,
+    required this.flightLineEndRadiusSize,
+    required this.secondaryIconSize,
+    required this.minHeight
   });
 }
 
 class FlutterAirSideBarItemStyles {
-  double? iconSize;
-  double? labelSize;
-  double? minHeight;
+  final double iconSize;
+  final double labelSize;
+  final double minHeight;
 
   FlutterAirSideBarItemStyles({
-    this.iconSize, this.labelSize, this.minHeight
+    required this.iconSize,
+    required this.labelSize,
+    required this.minHeight
   });
 }
 
 class FlutterAirSideBarItem {
-  IconData? icon;
-  String? label;
+  final IconData icon;
+  final String label;
 
-  FlutterAirSideBarItem({ this.icon, this.label });
+  FlutterAirSideBarItem({ required this.icon, required this.label });
 }

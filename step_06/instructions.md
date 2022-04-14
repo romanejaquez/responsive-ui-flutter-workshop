@@ -37,7 +37,7 @@ return LayoutBuilder(
         // predefined "twoColumnLayoutWidth" threshold,
         // then return the existing Column widget as usual
     }
-});
+);
 
 ```
 
@@ -48,32 +48,33 @@ Now return another layout otherwise - when the constraints do not satisfy that c
 return LayoutBuilder(
     builder: (context, constraints) {
     
-    // TODO: Step #1 (cont.) if constraints.maxWidth is less than our 
-    // predefined "twoColumnLayoutWidth" threshold,
-    // then return the existing Column widget as usual
-    
-    // otherwise return the bottom structure:
-    // TODO: Step #2
-    // a Row with two (2) columns:
-    // left side shows the main flight details
-    // and right side shows the flight and seat info only
-    return Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-            Expanded(
-                flex: 2,
-                child: flightInfoColumn
-            ),
-            Expanded(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: flightInfoWidgets
+        // TODO: Step #1 (cont.) if constraints.maxWidth is less than our 
+        // predefined "twoColumnLayoutWidth" threshold,
+        // then return the existing Column widget as usual
+        
+        // otherwise return the bottom structure:
+        // TODO: Step #2
+        // a Row with two (2) columns:
+        // left side shows the main flight details
+        // and right side shows the flight and seat info only
+        return Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+                Expanded(
+                    flex: 2,
+                    child: flightInfoColumn
+                ),
+                Expanded(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: flightInfoWidgets
+                    )
                 )
-            )
-        ]
-    );
-});
+            ]
+        );
+    }
+);
 
 ```
 

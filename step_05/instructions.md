@@ -23,15 +23,24 @@ Let's start by creating a helper class called ```FlutterAirSideBarItemStyles``` 
 
 Use the following specs when creating the ```FlutterAirSideBarItemStyles``` class:
 - add two properties:
-  - ```iconSize```, type ```double?```
-  - ```labelSize```, type ```double?```
+  - ```iconSize```, type ```double```
+  - ```labelSize```, type ```double```
 - add a constructor with named parameters for both properties
 
 ```dart
-// Step #1: create a class called "FlutterAirSideBarItemStyles";
+// Step #1: add the bottom class called "FlutterAirSideBarItemStyles";
 // this class to hold the style configuration associated
 // to a supported breakpoint / screen size.
-// (See existing class "FlutterAirSideBarItem" for reference)
+
+class FlutterAirSideBarItemStyles {
+  final double iconSize;
+  final double labelSize;
+
+  FlutterAirSideBarItemStyles({
+    required this.iconSize,
+    required this.labelSize
+  });
+}
 
 ```
 
@@ -44,17 +53,33 @@ Build it according to these specs:
 
 ```dart
 
-// Step #2: add the sideBarItemStyles map and populate it
-// according to the specs above
+// Step #2: add the sideBarItemStyles map
+
 static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
     DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
     ),
-    // TODO: add mapping for tablet,
-    // TODO: add mapping for laptop
-    // TODO: add mapping for desktop
-    // TODO: add mapping for tv
+    DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
+       iconSize: 30,
+       labelSize: 15
+    ),
+    DeviceBreakpoints.tablet: FlutterAirSideBarItemStyles(
+       iconSize: 30,
+       labelSize: 15
+    ),
+    DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
+       iconSize: 25,
+       labelSize: 15
+    ),
+    DeviceBreakpoints.desktop: FlutterAirSideBarItemStyles(
+       iconSize: 25,
+       labelSize: 20
+    ),
+    DeviceBreakpoints.tv: FlutterAirSideBarItemStyles(
+       iconSize: 25,
+       labelSize: 20
+    )
 };
 
 ```
@@ -87,7 +112,9 @@ As the first thing in this ```build``` method, retrieve the ```sideBarItemStyles
 // ... rest of the code omitted for brevity 
 
 DeviceBreakpoints deviceType = Utils.getDeviceType(context);
-FlutterAirSideBarItemStyles? sideBarItemStyles = Utils.sideBarItemStyles[deviceType];
+
+FlutterAirSideBarItemStyles sideBarItemStyles =
+    Utils.sideBarItemStyles[deviceType] as FlutterAirSideBarItemStyles;
 
 ```
 

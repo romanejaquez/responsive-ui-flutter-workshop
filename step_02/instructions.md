@@ -101,9 +101,9 @@ Now, using that enum value, extract the value corresponding to it from the ```Ut
 
 // Step #5: pull the "DeviceDescription" out of the 
 // Utils.deviceTypes Map, passing the deviceBreakpoint retrieved above
-DeviceDescription? deviceDesc = Utils.deviceTypes[deviceBreakpoint];
+DeviceDescription deviceDesc = Utils.deviceTypes[deviceBreakpoint] as DeviceDescription;
 
-// TODO: Use deviceDesc!.icon and deviceDesc.label
+// TODO: Use deviceDesc.icon and deviceDesc.label
 // to populate both "icon" and "label" variables
 // inside the build method
 
@@ -111,7 +111,7 @@ DeviceDescription? deviceDesc = Utils.deviceTypes[deviceBreakpoint];
 
 If you want to see the values for the ```icon``` and ```label``` as widgets, then populate the ```Column``` widget on the ```DeviceScreenIndicator``` by adding two widgets: 
 - an ```Icon``` widget, with the value of ``icon``, with a color of ```Colors.blueAccent```, and size ```70```
-- a ``Text`` widget, with the value of ``label!``, and with its ```style``` property set to a ```const```  ``TextStyle`` object, also color ```Colors.blueAccent``` and a font size of ``20``.
+- a ``Text`` widget, with the value of ``label``, and with its ```style``` property set to a ```const```  ``TextStyle`` object, also color ```Colors.blueAccent``` and a font size of ``20``.
   
 
 ```dart

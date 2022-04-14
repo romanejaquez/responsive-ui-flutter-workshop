@@ -37,8 +37,8 @@ class SampleApp extends StatelessWidget {
 
 class LayoutBuilderIndicator extends StatelessWidget {
 
-  final Color? color;
-  const LayoutBuilderIndicator({Key? key, this.color }) : super(key: key);
+  final Color color;
+  const LayoutBuilderIndicator({Key? key, required this.color }) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class LayoutBuilderIndicator extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: color!,
+            color: color,
             width: 10
           )
         ),
@@ -67,10 +67,10 @@ class LayoutBuilderIndicator extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Text('LayoutBuilder', style: TextStyle(color: color!, fontSize: 20)),
+                    child: Text('LayoutBuilder', style: TextStyle(color: color, fontSize: 20)),
                   )
                 ),
-                VerticalSizeConstraintsIndicator(maxWidth: maxWidth, maxHeight: maxHeight, color: color!),
+                VerticalSizeConstraintsIndicator(maxWidth: maxWidth, maxHeight: maxHeight, color: color),
                 HorizontalSizeConstraintsIndicator(maxWidth: maxWidth, maxHeight: maxHeight, color: color)
               ]
             );
@@ -83,8 +83,8 @@ class LayoutBuilderIndicator extends StatelessWidget {
 
 class ChildLayoutBuilderIndicator extends StatelessWidget {
 
-  final Color? color;
-  const ChildLayoutBuilderIndicator({Key? key, this.color }) : super(key: key);
+  final Color color;
+  const ChildLayoutBuilderIndicator({Key? key, required this.color }) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class ChildLayoutBuilderIndicator extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: color!,
+            color: color,
             width: 10
           )
         ),
@@ -117,10 +117,10 @@ class ChildLayoutBuilderIndicator extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Text('Child LayoutBuilder', style: TextStyle(color: color!, fontSize: 20)),
+                    child: Text('Child LayoutBuilder', style: TextStyle(color: color, fontSize: 20)),
                   )
                 ),
-                VerticalSizeConstraintsIndicator(maxWidth: childMaxWidth, maxHeight: childMaxHeight, color: color!),
+                VerticalSizeConstraintsIndicator(maxWidth: childMaxWidth, maxHeight: childMaxHeight, color: color),
                 HorizontalSizeConstraintsIndicator(maxWidth: childMaxWidth, maxHeight: childMaxHeight, color: color)
               ]
             );
@@ -133,16 +133,16 @@ class ChildLayoutBuilderIndicator extends StatelessWidget {
 
 class DeviceScreenIndicator extends StatelessWidget {
   
-  const DeviceScreenIndicator({ Key? key}) : super(key: key);
+  const DeviceScreenIndicator({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
     DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
-    DeviceDescription? deviceDesc = Utils.deviceTypes[deviceBreakpoint];
+    DeviceDescription deviceDesc = Utils.deviceTypes[deviceBreakpoint] as DeviceDescription;
 
-    IconData? icon = deviceDesc!.icon;
-    String? label = deviceDesc.label;
+    IconData icon = deviceDesc.icon;
+    String label = deviceDesc.label;
     
     return Align(
       alignment: Alignment.topLeft,
@@ -153,7 +153,7 @@ class DeviceScreenIndicator extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.blueAccent, size: 30),
             const SizedBox(height: 10),
-            Text(label!, 
+            Text(label, 
               style: const TextStyle(color: Colors.blueAccent, fontSize: 15)
             )
           ]
@@ -165,11 +165,15 @@ class DeviceScreenIndicator extends StatelessWidget {
 
 class HorizontalSizeConstraintsIndicator extends StatelessWidget {
   
-  final Color? color;
-  final double? maxWidth;
-  final double? maxHeight;
+  final Color color;
+  final double maxWidth;
+  final double maxHeight;
   
-  const HorizontalSizeConstraintsIndicator({ Key? key, this.color, this.maxWidth, this.maxHeight }) : super(key: key);
+  const HorizontalSizeConstraintsIndicator({ 
+    Key? key,
+    required this.color,
+    required this.maxWidth,
+    required this.maxHeight }) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -177,7 +181,7 @@ class HorizontalSizeConstraintsIndicator extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          top: maxHeight! / 2,
+          top: maxHeight / 2,
           left: -6,
           child: Icon(
             Icons.west,
@@ -186,7 +190,7 @@ class HorizontalSizeConstraintsIndicator extends StatelessWidget {
           )
         ),
         Positioned(
-          top: maxHeight! / 2,
+          top: maxHeight / 2,
           right: -6,
           child: Icon(
             Icons.east,
@@ -195,7 +199,7 @@ class HorizontalSizeConstraintsIndicator extends StatelessWidget {
           )
         ),
         Positioned(
-          top: (maxHeight! / 2) + 36,
+          top: (maxHeight / 2) + 36,
           left: 0,
           right: 0,
           child: Container(
@@ -208,7 +212,7 @@ class HorizontalSizeConstraintsIndicator extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Container(
             margin: const EdgeInsets.only(left: 50, bottom: 30),
-            child: Text('${maxWidth!.toInt()}', 
+            child: Text('${maxWidth.toInt()}', 
                         style: TextStyle(fontSize: 30, color: color))
           )
         )
@@ -219,11 +223,15 @@ class HorizontalSizeConstraintsIndicator extends StatelessWidget {
 
 class VerticalSizeConstraintsIndicator extends StatelessWidget {
   
-  final Color? color;
-  final double? maxWidth;
-  final double? maxHeight;
+  final Color color;
+  final double maxWidth;
+  final double maxHeight;
   
-  const VerticalSizeConstraintsIndicator({ Key? key, this.maxWidth, this.maxHeight, this.color }): super(key: key);
+  const VerticalSizeConstraintsIndicator({ 
+    Key? key,
+    required this.maxWidth,
+    required this.maxHeight,
+    required this.color }): super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -262,7 +270,7 @@ class VerticalSizeConstraintsIndicator extends StatelessWidget {
             angle: -1.55,
             child: Container(
               margin: const EdgeInsets.only(bottom: 30, right: 100),
-              child: Text('${maxHeight!.toInt()}', 
+              child: Text('${maxHeight.toInt()}', 
                           style: TextStyle(fontSize: 30, color: color))
             )
           )
@@ -274,15 +282,15 @@ class VerticalSizeConstraintsIndicator extends StatelessWidget {
 
 class HorizontalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const HorizontalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const HorizontalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
-    var height = mediaQueryData!.size.height;
-    var width = mediaQueryData!.size.width;
+    var height = mediaQueryData.size.height;
+    var width = mediaQueryData.size.width;
 
     return Stack(
       children: [
@@ -329,14 +337,14 @@ class HorizontalSizeIndicator extends StatelessWidget {
 
 class VerticalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const VerticalSizeIndicator({ this.mediaQueryData });
+  const VerticalSizeIndicator({ required this.mediaQueryData });
 
   @override
   Widget build(BuildContext context) {
 
-    var height = mediaQueryData!.size.height;
+    var height = mediaQueryData.size.height;
     
     return Stack(
       children: [
@@ -391,10 +399,10 @@ enum DeviceBreakpoints {
 }
 
 class DeviceDescription {
-  IconData? icon;
-  String? label;
+  final IconData icon;
+  final String label;
   
-  DeviceDescription({ this.icon, this.label });
+  DeviceDescription({ required this.icon, required this.label });
 }
 
 class Utils {

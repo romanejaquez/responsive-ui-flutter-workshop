@@ -94,8 +94,8 @@ class DeviceScreenIndicator extends StatelessWidget {
     // TODO: Step #5: usign the retrieved enum above, get the 
     // DeviceDescription from the Utils.deviceTypes mapping
     // and use it to populate the "icon" and "label" properties below:
-    IconData? icon;
-    String? label;
+    IconData icon;
+    String label;
     
     return Align(
       alignment: Alignment.topLeft,
@@ -116,15 +116,15 @@ class DeviceScreenIndicator extends StatelessWidget {
 
 class HorizontalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const HorizontalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const HorizontalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
-    var height = mediaQueryData!.size.height;
-    var width = mediaQueryData!.size.width;
+    var height = mediaQueryData.size.height;
+    var width = mediaQueryData.size.width;
 
     return Stack(
       children: [
@@ -171,14 +171,14 @@ class HorizontalSizeIndicator extends StatelessWidget {
 
 class VerticalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const VerticalSizeIndicator({ Key? key, this.mediaQueryData }) : super(key: key);
+  const VerticalSizeIndicator({ Key? key, required this.mediaQueryData }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    var height = mediaQueryData!.size.height;
+    var height = mediaQueryData.size.height;
     
     return Stack(
       children: [
@@ -225,8 +225,8 @@ class VerticalSizeIndicator extends StatelessWidget {
 }
 
 class DeviceDescription {
-  IconData? icon;
-  String? label;
+  final IconData icon;
+  final String label;
   
-  DeviceDescription({ this.icon, this.label });
+  DeviceDescription({ required this.icon, required this.label });
 }

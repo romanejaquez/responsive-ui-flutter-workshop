@@ -33,9 +33,9 @@ class TestMediaQueryWidget extends StatelessWidget {
 
 class HorizontalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const HorizontalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const HorizontalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +89,9 @@ class HorizontalSizeIndicator extends StatelessWidget {
 
 class VerticalSizeIndicator extends StatelessWidget {
   
-  final MediaQueryData? mediaQueryData;
+  final MediaQueryData mediaQueryData;
 
-  const VerticalSizeIndicator({ Key? key, this.mediaQueryData }): super(key: key);
+  const VerticalSizeIndicator({ Key? key, required this.mediaQueryData }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
