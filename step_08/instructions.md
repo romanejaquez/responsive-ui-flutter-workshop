@@ -73,8 +73,6 @@ static Map<DeviceBreakpoints, FlutterAirSideMenuStyles> sideMenuStyles = {
 
 ```
 
-### Enable the FlutterAirSideMenu widget
-
 In the image below, notice how for screen sizes larger than mobile there's only two menu items available, while for mobile only, all menu items are available. This is the strategy of showing content when space allows but still having an alternative on how to access it.
 
 ![SideMenu](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/step8_1.png)

@@ -12,8 +12,6 @@ And this is what you'll accomplish in this section:
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/layoutconstraints_scroll.gif)
 
-You will apply this on both the main body and on the navigation on the left.
-
 Locate the ```FlutterAirWelcome``` custom widget, which represents the main welcome screen, which holds both the ```FlutterAirSideBar``` and the ```FlutterAirFlightInfo```.
 
 This is the structure you want to accomplish:
