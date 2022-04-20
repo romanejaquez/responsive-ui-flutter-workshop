@@ -15,7 +15,7 @@ There are other widgets that facilitate responsiveness that you should continue 
 - [OrientationBuilder](https://api.flutter.dev/flutter/widgets/OrientationBuilder-class.html), different from [MediaQueryData.orientation](https://api.flutter.dev/flutter/widgets/MediaQueryData/orientation.html)
 - [AspectRatio](https://api.flutter.dev/flutter/widgets/AspectRatio-class.html)
 - [FractionallySizedBox](https://api.flutter.dev/flutter/widgets/FractionallySizedBox-class.html)
-- [Buildinging Adaptive Apps](https://docs.flutter.dev/development/ui/layout/building-adaptive-apps)
+- [Building Adaptive Apps](https://docs.flutter.dev/development/ui/layout/building-adaptive-apps)
 
 And more!
 
