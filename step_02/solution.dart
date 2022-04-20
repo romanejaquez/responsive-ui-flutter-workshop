@@ -11,13 +11,13 @@ class SampleApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TestDeviceBreakpointsWidget()
+        body: TestDeviceTypeWidget()
       ),
     );
   }
 }
 
-enum DeviceBreakpoints {
+enum DeviceType {
   mobile,
   tablet,
   laptop
@@ -26,46 +26,46 @@ enum DeviceBreakpoints {
 // Utilities class
 class Utils {
   
-  static const int mobileMaxSize = 480;
-  static const int tabletMaxSize = 768;
-  static const int laptopMaxSize = 1024;
+  static const int mobileMaxWidth = 480;
+  static const int tabletMaxWidth = 768;
+  static const int laptopMaxWidth = 1024;
   
-  static Map<DeviceBreakpoints, DeviceDescription> deviceTypes = {
-    DeviceBreakpoints.mobile: DeviceDescription(
+  static Map<DeviceType, DeviceDescription> deviceTypes = {
+    DeviceType.mobile: DeviceDescription(
       icon: Icons.phone_iphone,
       label: "Mobile"
     ),
-    DeviceBreakpoints.tablet: DeviceDescription(
+    DeviceType.tablet: DeviceDescription(
       icon: Icons.tablet_mac,
       label: "Tablet"
     ),
-    DeviceBreakpoints.laptop: DeviceDescription(
+    DeviceType.laptop: DeviceDescription(
       icon: Icons.laptop_mac,
       label: "Laptop"
     )
   };
   
-  static DeviceBreakpoints getDeviceType(BuildContext context) {
+  static DeviceType getDeviceType(BuildContext context) {
 
     MediaQueryData data = MediaQuery.of(context);
-    DeviceBreakpoints bk = DeviceBreakpoints.mobile;
+    DeviceType bk = DeviceType.mobile;
 
-    if (data.size.width > Utils.mobileMaxSize 
-      && data.size.width <= Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.tablet;
+    if (data.size.width > Utils.mobileMaxWidth 
+      && data.size.width <= Utils.tabletMaxWidth) {
+      bk = DeviceType.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.laptop;
+    else if (data.size.width > Utils.tabletMaxWidth) {
+      bk = DeviceType.laptop;
     }
 
     return bk;
   }
 }
 
-class TestDeviceBreakpointsWidget extends StatelessWidget {
+class TestDeviceTypeWidget extends StatelessWidget {
 
-  const TestDeviceBreakpointsWidget({ Key? key }) : super(key: key);
+  const TestDeviceTypeWidget({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class DeviceScreenIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
+    DeviceType deviceBreakpoint = Utils.getDeviceType(context);
     DeviceDescription deviceDesc = Utils.deviceTypes[deviceBreakpoint] as DeviceDescription;
 
     IconData icon = deviceDesc.icon;

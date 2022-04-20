@@ -9,7 +9,11 @@ As the user resizes the screen and simulates the multiple screen sizes in which 
 You can apply certain rule-of-thumb guidelines when it comes to achieving good responsiveness in your apps, such as:
 
 ## Showing content when there's room for it
-You should make sure that when you hide content, you provide an alternative on how to bring it back. This is usually reserved for non-critical content that the user doesn't need to have visible all the time, for example an expandable navigation, that when there's room on the screen it can be shown all the time, otherwise it can be hidden, and then shown at the click of a button on a smaller screen.
+You should make sure that when you hide content, you provide an alternative on how to bring it back. 
+
+This is usually reserved for non-critical content that the user doesn't need to have visible all the time, for example an expandable navigation.
+
+When there's room on the screen, the non-critical content can be shown all the time, otherwise it can be hidden, and then shown at the click of a button on a smaller screen.
 
 ![LayoutBuilder](https://romanejaquez.github.io/responsive-ui-flutter-workshop/images/flutterair1.gif)
 
@@ -42,22 +46,22 @@ class FlutterAirSideBarItemStyles {
 
 ```
 
-Now go to the ```Utils``` class, and create a ```static``` **Map** called ```sideBarItemStyles```, type ```Map<DeviceBreakpoints, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceBreakpoints```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
+Now go to the ```Utils``` class, and create a ```static``` **Map** called ```sideBarItemStyles```, type ```Map<DeviceType, FlutterAirSideBarItemStyles>```; its entries will hold a key of type ```DeviceType```, one for each of the supported breakpoints, and as their value, an instance of ```FlutterAirSideBarItemStyles```, which will hold the configuration for the icon and label sizes.
 
 ```dart
 
 // Step #2: add the sideBarItemStyles map
 
-static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
-    DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
+static Map<DeviceType, FlutterAirSideBarItemStyles> sideBarItemStyles = {
+    DeviceType.mobile: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
     ),
-    DeviceBreakpoints.tablet: FlutterAirSideBarItemStyles(
+    DeviceType.tablet: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
     ),
-    DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
+    DeviceType.laptop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 15
     )
@@ -102,12 +106,12 @@ Wrap the ```Material``` widget inside a ```Visibility``` widget, and set its ```
 ```dart
 
 // Step #5: Use MediaQuery.of(context).size.width to compare the screen's
-// width against your preset mobileMaxSize value:
+// width against your preset mobileMaxWidth value:
 
 // ... rest of the code omitted for brevity:
 
 return Visibility(
-    visible: MediaQuery.of(context).size.width > Utils.mobileMaxSize,
+    visible: MediaQuery.of(context).size.width > Utils.mobileMaxWidth,
     child: Material(
       // ... rest of the code remains the same
     )
@@ -116,7 +120,7 @@ return Visibility(
 
 ```
 
-With the code above, you ensure that this widget's hierarchy is only visible under those conditions (i.e. only when larger than ```mobileMaxSize```, otherwise it will be hidden for mobile users).
+With the code above, you ensure that this widget's hierarchy is only visible under those conditions (i.e. only when larger than ```mobileMaxWidth```, otherwise it will be hidden for mobile users).
 
 You still haven't taken care of showing the labels if the screen's real estate allows it.
 
@@ -125,12 +129,12 @@ Go down into this widget's hierarchy and locate the ```Padding``` widget that is
 ```dart
 
 // Step #6: Use MediaQuery.of(context).size.width to compare the screen's
-// width against your preset tabletMaxSize value:
+// width against your preset tabletMaxWidth value:
 
 // ... rest of the code omitted for brevity:
 
 Visibility(
-  visible: MediaQuery.of(context).size.width > Utils.tabletMaxSize,
+  visible: MediaQuery.of(context).size.width > Utils.tabletMaxWidth,
   child: Padding(
     // ... rest of the code remains the same.
   )

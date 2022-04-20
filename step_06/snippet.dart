@@ -49,12 +49,12 @@ class FlutterAirSideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    DeviceBreakpoints deviceType = Utils.getDeviceType(context);
+    DeviceType deviceType = Utils.getDeviceType(context);
     FlutterAirSideBarItemStyles sideBarItemStyles
       = Utils.sideBarItemStyles[deviceType] as FlutterAirSideBarItemStyles;
     
     return Visibility(
-      visible: MediaQuery.of(context).size.width > Utils.mobileMaxSize,
+      visible: MediaQuery.of(context).size.width > Utils.mobileMaxWidth,
       child: Material(
         color: Utils.secondaryThemeColor,
         child: Padding(
@@ -82,7 +82,7 @@ class FlutterAirSideBar extends StatelessWidget {
                             )
                           ),
                           Visibility(
-                            visible: MediaQuery.of(context).size.width > Utils.tabletMaxSize,
+                            visible: MediaQuery.of(context).size.width > Utils.tabletMaxWidth,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, top: 10, right: 20, bottom: 10),
                               child: Text(
@@ -375,7 +375,7 @@ class FlutterAirAppHeaderTitle extends StatelessWidget {
 
 // Utility Classes
 
-enum DeviceBreakpoints {
+enum DeviceType {
   mobile,
   tablet,
   laptop
@@ -383,9 +383,9 @@ enum DeviceBreakpoints {
 
 class Utils {
 
-  static const int mobileMaxSize = 480;
-  static const int tabletMaxSize = 768;
-  static const int laptopMaxSize = 1024;
+  static const int mobileMaxWidth = 480;
+  static const int tabletMaxWidth = 768;
+  static const int laptopMaxWidth = 1024;
   
 
   static const int twoColumnLayoutWidth = 600;
@@ -396,22 +396,22 @@ class Utils {
   static const Color normalLabelColor = Color(0xFF6C6C6C);
   static const Color lightPurpleColor = Color(0xFFC5ABF6);
 
-  static Map<DeviceBreakpoints, FlutterAirAppBarStyles> appBarStyles = {
-    DeviceBreakpoints.mobile: FlutterAirAppBarStyles(
+  static Map<DeviceType, FlutterAirAppBarStyles> appBarStyles = {
+    DeviceType.mobile: FlutterAirAppBarStyles(
       leadingIconBackgroundColor: Colors.transparent,
       leadingIconForegroundColor: Utils.mainThemeColor,
       backgroundColor: Colors.transparent,
       titleColor: Utils.mainThemeColor,
       titleIconColor: Colors.white
     ),
-    DeviceBreakpoints.tablet: FlutterAirAppBarStyles(
+    DeviceType.tablet: FlutterAirAppBarStyles(
       leadingIconBackgroundColor: Utils.darkThemeColor,
       leadingIconForegroundColor: Colors.white,
       backgroundColor: Utils.mainThemeColor,
       titleColor: Colors.white,
       titleIconColor: Utils.mainThemeColor,
     ),
-    DeviceBreakpoints.laptop: FlutterAirAppBarStyles(
+    DeviceType.laptop: FlutterAirAppBarStyles(
       leadingIconBackgroundColor: Utils.darkThemeColor,
       leadingIconForegroundColor: Colors.white,
       backgroundColor: Utils.mainThemeColor,
@@ -420,8 +420,8 @@ class Utils {
     )
   };
 
-  static Map<DeviceBreakpoints, FlutterAirFlightInfoStyles> flightInfoStyles = {
-    DeviceBreakpoints.mobile: FlutterAirFlightInfoStyles(
+  static Map<DeviceType, FlutterAirFlightInfoStyles> flightInfoStyles = {
+    DeviceType.mobile: FlutterAirFlightInfoStyles(
       labelSize: 15,
       primaryValueSize: 60,
       secondaryValueSize: 40,
@@ -434,7 +434,7 @@ class Utils {
       flightLineEndRadiusSize: 10,
       secondaryIconSize: 30
     ),
-    DeviceBreakpoints.tablet: FlutterAirFlightInfoStyles(
+    DeviceType.tablet: FlutterAirFlightInfoStyles(
       labelSize: 20,
       primaryValueSize: 60,
       secondaryValueSize: 50,
@@ -447,7 +447,7 @@ class Utils {
       flightLineEndRadiusSize: 15,
       secondaryIconSize: 30
     ),
-    DeviceBreakpoints.laptop: FlutterAirFlightInfoStyles(
+    DeviceType.laptop: FlutterAirFlightInfoStyles(
       labelSize: 20,
       primaryValueSize: 70,
       secondaryValueSize: 60,
@@ -462,18 +462,18 @@ class Utils {
     )
   };
 
-  static DeviceBreakpoints getDeviceType(BuildContext context) {
+  static DeviceType getDeviceType(BuildContext context) {
 
     MediaQueryData data = MediaQuery.of(context);
-    DeviceBreakpoints bk = DeviceBreakpoints.mobile;
+    DeviceType bk = DeviceType.mobile;
 
-    if (data.size.width > Utils.mobileMaxSize 
-      && data.size.width <= Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.tablet;
+    if (data.size.width > Utils.mobileMaxWidth 
+      && data.size.width <= Utils.tabletMaxWidth) {
+      bk = DeviceType.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.laptop;
+    else if (data.size.width > Utils.tabletMaxWidth) {
+      bk = DeviceType.laptop;
     }
 
     return bk;
@@ -509,16 +509,16 @@ class Utils {
     )
   ];
 
-  static Map<DeviceBreakpoints, FlutterAirSideBarItemStyles> sideBarItemStyles = {
-    DeviceBreakpoints.mobile: FlutterAirSideBarItemStyles(
+  static Map<DeviceType, FlutterAirSideBarItemStyles> sideBarItemStyles = {
+    DeviceType.mobile: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
     ),
-    DeviceBreakpoints.tablet: FlutterAirSideBarItemStyles(
+    DeviceType.tablet: FlutterAirSideBarItemStyles(
        iconSize: 30,
        labelSize: 15
     ),
-    DeviceBreakpoints.laptop: FlutterAirSideBarItemStyles(
+    DeviceType.laptop: FlutterAirSideBarItemStyles(
        iconSize: 25,
        labelSize: 15
     )

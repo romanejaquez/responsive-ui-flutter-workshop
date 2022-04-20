@@ -19,9 +19,9 @@ Proceed to find the ```Utils``` class in the code and start by adding the most c
 ```dart
 
 // Step #1: add the device screen size breakpoints
-static const int mobileMaxSize = 480;
-static const int tabletMaxSize = 768;
-static const int laptopMaxSize = 1024;
+static const int mobileMaxWidth = 480;
+static const int tabletMaxWidth = 768;
+static const int laptopMaxWidth = 1024;
 
 ```
 
@@ -31,7 +31,7 @@ Now, define an ```enum``` that will map to the corresponding device screen sizes
 
 ```dart
 
-// Step #2: Add an enum called "DeviceBreakpoints"
+// Step #2: Add an enum called "DeviceType"
 // for the supported device screen sizes; use the following values:
 
 // mobile, tablet, laptop
@@ -49,21 +49,21 @@ Go ahead and call the method ```getDeviceType```, and return the corresponding e
 ```dart
 
 // Step #3: add this method to the "Utils" class
-static DeviceBreakpoints getDeviceType(BuildContext context) {
+static DeviceType getDeviceType(BuildContext context) {
 
     // extract the media query information for this screen
     MediaQueryData data = MediaQuery.of(context);
 
     // default value is mobile
-    DeviceBreakpoints bk = DeviceBreakpoints.mobile;
+    DeviceType bk = DeviceType.mobile;
 
-    if (data.size.width > Utils.mobileMaxSize 
-      && data.size.width <= Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.tablet;
+    if (data.size.width > Utils.mobileMaxWidth 
+      && data.size.width <= Utils.tabletMaxWidth) {
+      bk = DeviceType.tablet;
     }
 
-    else if (data.size.width > Utils.tabletMaxSize) {
-      bk = DeviceBreakpoints.laptop;
+    else if (data.size.width > Utils.tabletMaxWidth) {
+      bk = DeviceType.laptop;
     }
 
     return bk;
@@ -76,7 +76,7 @@ Great! Now it's all a matter of consuming this method inside the widget that req
 ```dart
 
 // Step #4: pull the breakpoint enum value
-DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
+DeviceType deviceBreakpoint = Utils.getDeviceType(context);
 
 ```
 

@@ -12,7 +12,7 @@ Flutter provides a set of widgets and constructs to achieve responsiveness in yo
 
 The ```MediaQuery``` widget is available for when you wish to query your app's screen size at a high level, and can provide more detailed information about user layout preferences.
 
-If you want to learn the size of the current media (e.g., the window containing your app), you can read the ```MediaQueryData.size``` property from the ```MediaQueryData``` returned by ```MediaQuery.of```.
+If you want to get the size of the current media (e.g., the window containing your app), you can read the ```size``` property from the ```MediaQueryData``` returned by ```MediaQuery.of```.
 
 Querying the current media using ```MediaQuery.of``` will cause your widget to rebuild automatically whenever the ```MediaQueryData``` changes (e.g., if the user rotates their device, or stretches the containing window).
 
@@ -30,7 +30,7 @@ MediaQueryData data = MediaQuery.of(context);
 
 This extracts the [```MediaQueryData```](https://api.flutter.dev/flutter/widgets/MediaQueryData-class.html) which contains information about the width and height of the current window, as well as other useful information such as orientation.
 
-Now, feed the ```MediaQueryData``` object into each one of the indicator widgets **HorizontalSizeIndicator** and **VerticalSizeIndicator** by populating their ```mediaQueryData``` property:
+Now, feed the ```MediaQueryData``` object into each one of the indicator widgets ```HorizontalSizeIndicator``` and ```VerticalSizeIndicator``` by populating their ```mediaQueryData``` property:
 
 ```dart
 // Step #2: populate the mediaQueryData property for the indicator widgets,

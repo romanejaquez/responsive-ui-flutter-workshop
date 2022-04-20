@@ -39,7 +39,7 @@ class FlutterAirSideMenuStyles {
 
 ```
 
-Next, go to the ```Utils``` class and create a ```Map``` of type ```<DeviceBreakpoints, FlutterAirSideMenuStyles>```, and for every device breakpoint, define the corresponding properties for each. Grab the snippet below:
+Next, go to the ```Utils``` class and create a ```Map``` of type ```<DeviceType, FlutterAirSideMenuStyles>```, and for every device breakpoint, define the corresponding properties for each. Grab the snippet below:
 
 
 ```dart
@@ -47,22 +47,22 @@ Next, go to the ```Utils``` class and create a ```Map``` of type ```<DeviceBreak
 // TODO: Step #2 - Add the mappings in the Utils class,
 // called "sideMenuStyles", per supported breakpoint
 
-static Map<DeviceBreakpoints, FlutterAirSideMenuStyles> sideMenuStyles = {
-    DeviceBreakpoints.mobile: FlutterAirSideMenuStyles(
+static Map<DeviceType, FlutterAirSideMenuStyles> sideMenuStyles = {
+    DeviceType.mobile: FlutterAirSideMenuStyles(
       backgroundColor: Utils.secondaryThemeColor,
       labelColor: Colors.white,
       iconSize: 20,
       labelSize: 20,
       iconBgColor: Utils.mainThemeColor
     ),
-    DeviceBreakpoints.tablet: FlutterAirSideMenuStyles(
+    DeviceType.tablet: FlutterAirSideMenuStyles(
       backgroundColor: Colors.white,
       labelColor: Utils.darkThemeColor,
       iconSize: 30,
       labelSize: 20,
       iconBgColor: Utils.secondaryThemeColor
     ),
-    DeviceBreakpoints.laptop: FlutterAirSideMenuStyles(
+    DeviceType.laptop: FlutterAirSideMenuStyles(
       backgroundColor: Colors.white,
       labelColor: Utils.darkThemeColor,
       iconSize: 30,
@@ -91,7 +91,7 @@ Now, inside its ```build``` method, start by fetching the side menu styles corre
 
 // TODO: Step #4 - add this at the top of the FlutterAirSideMenu's build method
 
-DeviceBreakpoints deviceBreakpoint = Utils.getDeviceType(context);
+DeviceType deviceBreakpoint = Utils.getDeviceType(context);
 FlutterAirSideMenuStyles menuStyles = Utils.sideMenuStyles[deviceBreakpoint] as FlutterAirSideMenuStyles;
 
 ```
@@ -104,7 +104,7 @@ Proceed to utilize the newly created method ```getMenuItems``` to generate the m
 // then get the Utils.sideBarItems as menu items, otherwise
 // return an empty list
 
-List<Widget> mainMenuItems = deviceBreakpoint == DeviceBreakpoints.mobile ? 
+List<Widget> mainMenuItems = deviceBreakpoint == DeviceType.mobile ? 
     getMenuItems(Utils.sideBarItems, menuStyles) : [];
 
 ```

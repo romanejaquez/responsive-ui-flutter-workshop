@@ -11,7 +11,7 @@ class SampleApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TestDeviceBreakpointsWidget()
+        body: TestDeviceTypeWidget()
       ),
     );
   }
@@ -26,16 +26,16 @@ class Utils {
   
   // TODO: Step #2 - uncomment the bottom mapping
   // after creating the enum above
-  /*static Map<DeviceBreakpoints, DeviceDescription> deviceTypes = {
-    DeviceBreakpoints.mobile: DeviceDescription(
+  /*static Map<DeviceType, DeviceDescription> deviceTypes = {
+    DeviceType.mobile: DeviceDescription(
       icon: Icons.phone_iphone,
       label: "Mobile"
     ),
-    DeviceBreakpoints.tablet: DeviceDescription(
+    DeviceType.tablet: DeviceDescription(
       icon: Icons.tablet_mac,
       label: "Tablet"
     ),
-    DeviceBreakpoints.laptop: DeviceDescription(
+    DeviceType.laptop: DeviceDescription(
       icon: Icons.laptop_mac,
       label: "Laptop"
     )
@@ -44,9 +44,9 @@ class Utils {
   // TODO: add Step #3 here (the getDeviceType method)
 }
 
-class TestDeviceBreakpointsWidget extends StatelessWidget {
+class TestDeviceTypeWidget extends StatelessWidget {
 
-  const TestDeviceBreakpointsWidget({ Key? key }) : super(key: key);
+  const TestDeviceTypeWidget({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

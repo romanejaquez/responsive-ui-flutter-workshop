@@ -2,11 +2,13 @@
 
 Sometimes users may not be concerned with the dimensions of the app's screen, but rather how much space a parent widget has devoted to its child widgets for them to render appropriately. For this case, there's a special widget called ```LayoutBuilder```.
 
-The [```LayoutBuilder```](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) widget is a simpler ```MediaQuery``` widget for basic size requests, but the best thing about it is that it tells the underlying widget tree how much space it has available.
+The [```LayoutBuilder```](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) widget is a simplified ```MediaQuery``` widget for basic size requests, but the best thing about it is that it tells the underlying widget tree how much space it has available.
 
 It is similar to the ```Builder``` widget, except that the framework calls the ```builder``` function at layout time and provides the parent widget's constraints.
 
-Its ```builder``` function is fed both the ```BuildContext``` and a ```BoxConstraints``` instance, from which you can pull the **maxWidth** and **maxHeight**, which after the parent builds, it passes these values to a child for them to know the available dimensions in which they can render.
+Its ```builder``` function is fed both the ```BuildContext``` and a ```BoxConstraints``` instance, from which you can pull the ```maxWidth``` and ```maxHeight```.
+
+After the parent widget builds, it passes these values to a child for them to know the available dimensions in which they can render.
 
 First, find a custom widget I created for you called ```LayoutBuilderIndicator```, which should display the space dimensions available to it, then pass it down to its child widgets.
 
